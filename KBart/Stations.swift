@@ -55,17 +55,35 @@ class StationList
 {
     
     var stations:[String:Station]
+    var stationArray : [Station]
     
     init()
     {
+        //Create an empty station list
         self.stations = [:]
+        stationArray = [Station]()
+    }
+    
+     subscript(key: String) -> Station
+    {
+        var Stat : Station = stations[key]!
+        return Stat
+    }
+     subscript(key: Int) -> Station
+    {
+            var Stat : Station = stationArray[key]
+            return Stat
+    }
+    
+    func NumberOfStations() -> Int
+    {
+        return stations.count
     }
     
     //reads in stations
     //queries BART API, adds to local station list
-    func ReadStations()
+    func ReadStations_AEXML()
     {
-        var stationList = [String:Station]()
         
         if let xmlPath = NSBundle.mainBundle().pathForResource("BARTStations", ofType: "xml") {
             if let data = NSData(contentsOfFile: xmlPath)
@@ -77,7 +95,7 @@ class StationList
                     // parse known structure
                     for stat in doc["root"]["stations"]["station"].all!
                     {
-                        var stationName = stat["name"].stringValue
+                        var stationKey = stat["abbr"].stringValue
                         
                         var newStation :Station = Station(  fromName:stat["name"].stringValue,
                             fromAbbr:stat["abbr"].stringValue,
@@ -89,8 +107,8 @@ class StationList
                             fromState:stat["state"].stringValue,
                             fromZipCode:stat["zipcode"].stringValue)
                         
-                        //stationList[newStation.name] = newStation
-                        self.stations[stationName] = newStation
+                        self.stations[stationKey] = newStation
+                        self.stationArray.insert(newStation, atIndex: 0)
                     }
                 }
                 else

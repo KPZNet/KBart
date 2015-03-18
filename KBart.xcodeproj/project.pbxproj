@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6347C53B1ABA11D000A5D980 /* CBTestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6347C53A1ABA11D000A5D980 /* CBTestTableViewController.swift */; };
 		719288D41AB8FC7200AEE5E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719288D31AB8FC7200AEE5E1 /* AppDelegate.swift */; };
 		719288D61AB8FC7200AEE5E1 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719288D51AB8FC7200AEE5E1 /* FirstViewController.swift */; };
 		719288D81AB8FC7200AEE5E1 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719288D71AB8FC7200AEE5E1 /* SecondViewController.swift */; };
@@ -30,6 +31,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6347C53A1ABA11D000A5D980 /* CBTestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBTestTableViewController.swift; sourceTree = "<group>"; };
 		719288CE1AB8FC7200AEE5E1 /* KBart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KBart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		719288D21AB8FC7200AEE5E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		719288D31AB8FC7200AEE5E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 				719288DE1AB8FC7200AEE5E1 /* LaunchScreen.xib */,
 				719288D11AB8FC7200AEE5E1 /* Supporting Files */,
 				719288F51AB8FCDA00AEE5E1 /* Stations.swift */,
+				6347C53A1ABA11D000A5D980 /* CBTestTableViewController.swift */,
 			);
 			path = KBart;
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 				719288D81AB8FC7200AEE5E1 /* SecondViewController.swift in Sources */,
 				719288D41AB8FC7200AEE5E1 /* AppDelegate.swift in Sources */,
 				719288F61AB8FCDA00AEE5E1 /* Stations.swift in Sources */,
+				6347C53B1ABA11D000A5D980 /* CBTestTableViewController.swift in Sources */,
 				719288D61AB8FC7200AEE5E1 /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -439,6 +443,7 @@
 				719288F11AB8FC7300AEE5E1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		719288F21AB8FC7300AEE5E1 /* Build configuration list for PBXNativeTarget "KBartTests" */ = {
 			isa = XCConfigurationList;
@@ -447,6 +452,7 @@
 				719288F41AB8FC7300AEE5E1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

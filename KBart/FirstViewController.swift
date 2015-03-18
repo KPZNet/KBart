@@ -11,7 +11,6 @@ import UIKit
 
 class FirstViewController: UIViewController
 {
-    var stats :StationList = StationList()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,16 +22,14 @@ class FirstViewController: UIViewController
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func readInStations(sender: AnyObject)
-    {
-        
-        stats.ReadStations()
-        
-    }
+
 
     @IBAction func checkStations(sender: AnyObject)
     {
-        
+//        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+//        let aVariable = appDelegate.stationList
+//        
+//        var stat : Station = aVariable["K"]
     }
 }
 
