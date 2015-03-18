@@ -62,6 +62,7 @@ class StationList
     }
     
     //reads in stations
+    //queries BART API, adds to local station list
     func ReadStations()
     {
         var stationList = [String:Station]()
