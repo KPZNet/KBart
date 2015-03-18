@@ -14,6 +14,9 @@
 		719288DD1AB8FC7200AEE5E1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 719288DC1AB8FC7200AEE5E1 /* Images.xcassets */; };
 		719288E01AB8FC7200AEE5E1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 719288DE1AB8FC7200AEE5E1 /* LaunchScreen.xib */; };
 		719288EC1AB8FC7300AEE5E1 /* KBartTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719288EB1AB8FC7300AEE5E1 /* KBartTests.swift */; };
+		719288F61AB8FCDA00AEE5E1 /* Stations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719288F51AB8FCDA00AEE5E1 /* Stations.swift */; };
+		719288F91AB91E3F00AEE5E1 /* AEXML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719288F81AB91E3F00AEE5E1 /* AEXML.swift */; };
+		719288FC1AB91ECA00AEE5E1 /* BARTStations.xml in Resources */ = {isa = PBXBuildFile; fileRef = 719288FB1AB91ECA00AEE5E1 /* BARTStations.xml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +41,9 @@
 		719288E51AB8FC7200AEE5E1 /* KBartTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KBartTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		719288EA1AB8FC7300AEE5E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		719288EB1AB8FC7300AEE5E1 /* KBartTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBartTests.swift; sourceTree = "<group>"; };
+		719288F51AB8FCDA00AEE5E1 /* Stations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stations.swift; sourceTree = "<group>"; };
+		719288F81AB91E3F00AEE5E1 /* AEXML.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AEXML.swift; sourceTree = "<group>"; };
+		719288FB1AB91ECA00AEE5E1 /* BARTStations.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = BARTStations.xml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +85,8 @@
 		719288D01AB8FC7200AEE5E1 /* KBart */ = {
 			isa = PBXGroup;
 			children = (
+				719288FA1AB91EAC00AEE5E1 /* BART Data */,
+				719288F71AB91E2A00AEE5E1 /* XMLParsers */,
 				719288D31AB8FC7200AEE5E1 /* AppDelegate.swift */,
 				719288D51AB8FC7200AEE5E1 /* FirstViewController.swift */,
 				719288D71AB8FC7200AEE5E1 /* SecondViewController.swift */,
@@ -86,6 +94,7 @@
 				719288DC1AB8FC7200AEE5E1 /* Images.xcassets */,
 				719288DE1AB8FC7200AEE5E1 /* LaunchScreen.xib */,
 				719288D11AB8FC7200AEE5E1 /* Supporting Files */,
+				719288F51AB8FCDA00AEE5E1 /* Stations.swift */,
 			);
 			path = KBart;
 			sourceTree = "<group>";
@@ -113,6 +122,22 @@
 				719288EA1AB8FC7300AEE5E1 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		719288F71AB91E2A00AEE5E1 /* XMLParsers */ = {
+			isa = PBXGroup;
+			children = (
+				719288F81AB91E3F00AEE5E1 /* AEXML.swift */,
+			);
+			name = XMLParsers;
+			sourceTree = "<group>";
+		};
+		719288FA1AB91EAC00AEE5E1 /* BART Data */ = {
+			isa = PBXGroup;
+			children = (
+				719288FB1AB91ECA00AEE5E1 /* BARTStations.xml */,
+			);
+			name = "BART Data";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,6 +221,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				719288DB1AB8FC7200AEE5E1 /* Main.storyboard in Resources */,
+				719288FC1AB91ECA00AEE5E1 /* BARTStations.xml in Resources */,
 				719288E01AB8FC7200AEE5E1 /* LaunchScreen.xib in Resources */,
 				719288DD1AB8FC7200AEE5E1 /* Images.xcassets in Resources */,
 			);
@@ -215,8 +241,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				719288F91AB91E3F00AEE5E1 /* AEXML.swift in Sources */,
 				719288D81AB8FC7200AEE5E1 /* SecondViewController.swift in Sources */,
 				719288D41AB8FC7200AEE5E1 /* AppDelegate.swift in Sources */,
+				719288F61AB8FCDA00AEE5E1 /* Stations.swift in Sources */,
 				719288D61AB8FC7200AEE5E1 /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
