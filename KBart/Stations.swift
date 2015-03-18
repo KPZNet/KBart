@@ -61,6 +61,7 @@ class StationList
         self.stations = [:]
     }
     
+    //reads in stations
     func ReadStations()
     {
         var stationList = [String:Station]()
