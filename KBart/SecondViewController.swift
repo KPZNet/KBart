@@ -58,6 +58,12 @@ class SecondViewController: UIViewController , UITableViewDelegate , UITableView
     }
 
 
+//    func basicCellAtIndexPath(indexPath:NSIndexPath) -> BasicCell {
+//        let cell = tableView.dequeueReusableCellWithIdentifier(customCellClassIdentifierName) as customCellClass
+//        setTitleForCell(cell, indexPath: indexPath)
+//        setSubtitleForCell(cell, indexPath: indexPath)
+//        return cell
+//    }
 
 }
 
