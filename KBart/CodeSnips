@@ -1,0 +1,44 @@
+//reads in stations
+//queries BART API, adds to local station list
+//    func ReadStations_AEXML()
+//    {
+//
+//        if let xmlPath = NSBundle.mainBundle().pathForResource("BARTStations", ofType: "xml")
+//        {
+//            if let data = NSData(contentsOfFile: xmlPath)
+//            {
+//                var error: NSError?
+//                if let doc = AEXMLDocument(xmlData: data, error: &error)
+//                {
+//                    var parsedText = String()
+//                    // parse known structure
+//                    for stat in doc["root"]["stations"]["station"].all!
+//                    {
+//                        var stationKey = stat["abbr"].stringValue
+//
+//                        var newStation :Station = Station(  fromName:stat["name"].stringValue,
+//                            fromAbbr:stat["abbr"].stringValue,
+//                            fromLatitude:stat["gtfs_latitude"].stringValue,
+//                            fromLongitude:stat["gtfs_longitude"].stringValue,
+//                            fromAddress:stat["address"].stringValue,
+//                            fromCity:stat["city"].stringValue,
+//                            fromCounty:stat["county"].stringValue,
+//                            fromState:stat["state"].stringValue,
+//                            fromZipCode:stat["zipcode"].stringValue)
+//
+//                        self.stations[stationKey] = newStation
+//                        self.stationArray.append(newStation)
+//                    }
+//                }
+//                else
+//                {
+//                    let err = "description: \(error?.localizedDescription)\ninfo: \(error?.userInfo)"
+//
+//                    var x :Float = 4.5
+//
+//                    x = x+3
+//
+//                }
+//            }
+//        }
+//    }

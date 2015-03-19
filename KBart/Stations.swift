@@ -8,27 +8,27 @@
 
 import Foundation
 
-class DepartureStation
-{
-    var minutes : String
-    var platform : String
-    var direction : String
-    var length : String
-    var lineColor : String
-    var lineColorHex : String
-    var bikeFlat : String
-}
-class DepartureStations
-{
-    var departureStations:[String:DepartureStation]
-    var departureStationsArray : [DepartureStation]
-    
-    init()
-    {
-        self.departureStations = [:]
-        self.departureStationsArray = [DepartureStation]()
-    }
-}
+//class DepartureStation
+//{
+//    var minutes : String
+//    var platform : String
+//    var direction : String
+//    var length : String
+//    var lineColor : String
+//    var lineColorHex : String
+//    var bikeFlat : String
+//}
+//class DepartureStations
+//{
+//    var departureStations:[String:DepartureStation]
+//    var departureStationsArray : [DepartureStation]
+//    
+//    init()
+//    {
+//        self.departureStations = [:]
+//        self.departureStationsArray = [DepartureStation]()
+//    }
+//}
 
 
 
@@ -104,49 +104,47 @@ class StationList
         return stations.count
     }
     
-    //reads in stations
-    //queries BART API, adds to local station list
+
+    
     func ReadStations_AEXML()
     {
         
-        if let xmlPath = NSBundle.mainBundle().pathForResource("BARTStations", ofType: "xml")
+        let urlPath:String = "http://api.bart.gov/api/stn.aspx?cmd=stns&key=\(BARTAPI_LIC_KEY)"
+        var url: NSURL = NSURL(string: urlPath)!
+        var request1: NSURLRequest = NSURLRequest(URL: url)
+        var response: AutoreleasingUnsafeMutablePointer<NSURLResponse?>=nil
+        var error: NSErrorPointer = nil
+        var dataVal: NSData =  NSURLConnection.sendSynchronousRequest(request1, returningResponse: response, error:nil)!
+        
+        
+        var errorData: NSError?
+        if let doc = AEXMLDocument(xmlData: dataVal, error: &errorData)
         {
-            if let data = NSData(contentsOfFile: xmlPath)
+            var parsedText = String()
+            // parse known structure
+            for stat in doc["root"]["stations"]["station"].all!
             {
-                var error: NSError?
-                if let doc = AEXMLDocument(xmlData: data, error: &error)
-                {
-                    var parsedText = String()
-                    // parse known structure
-                    for stat in doc["root"]["stations"]["station"].all!
-                    {
-                        var stationKey = stat["abbr"].stringValue
-                        
-                        var newStation :Station = Station(  fromName:stat["name"].stringValue,
-                            fromAbbr:stat["abbr"].stringValue,
-                            fromLatitude:stat["gtfs_latitude"].stringValue,
-                            fromLongitude:stat["gtfs_longitude"].stringValue,
-                            fromAddress:stat["address"].stringValue,
-                            fromCity:stat["city"].stringValue,
-                            fromCounty:stat["county"].stringValue,
-                            fromState:stat["state"].stringValue,
-                            fromZipCode:stat["zipcode"].stringValue)
-                        
-                        self.stations[stationKey] = newStation
-                        self.stationArray.append(newStation)
-                    }
-                }
-                else
-                {
-                    let err = "description: \(error?.localizedDescription)\ninfo: \(error?.userInfo)"
-                    
-                    var x :Float = 4.5
-                    
-                    x = x+3
-                    
-                }
+                var stationKey = stat["abbr"].stringValue
+                
+                var newStation :Station = Station(  fromName:stat["name"].stringValue,
+                    fromAbbr:stat["abbr"].stringValue,
+                    fromLatitude:stat["gtfs_latitude"].stringValue,
+                    fromLongitude:stat["gtfs_longitude"].stringValue,
+                    fromAddress:stat["address"].stringValue,
+                    fromCity:stat["city"].stringValue,
+                    fromCounty:stat["county"].stringValue,
+                    fromState:stat["state"].stringValue,
+                    fromZipCode:stat["zipcode"].stringValue)
+                
+                self.stations[stationKey] = newStation
+                self.stationArray.append(newStation)
             }
         }
+        else
+        {
+            let err = "description: \(errorData?.localizedDescription)\ninfo: \(errorData?.userInfo)"
+        }
     }
+
     
 }

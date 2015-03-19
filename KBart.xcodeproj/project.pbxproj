@@ -20,6 +20,8 @@
 		719288F61AB8FCDA00AEE5E1 /* Stations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719288F51AB8FCDA00AEE5E1 /* Stations.swift */; };
 		719288F91AB91E3F00AEE5E1 /* AEXML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719288F81AB91E3F00AEE5E1 /* AEXML.swift */; };
 		719288FC1AB91ECA00AEE5E1 /* BARTStations.xml in Resources */ = {isa = PBXBuildFile; fileRef = 719288FB1AB91ECA00AEE5E1 /* BARTStations.xml */; };
+		71FD4A1D1ABA8A800009F4B7 /* ProjectConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FD4A1C1ABA8A800009F4B7 /* ProjectConstants.swift */; };
+		71FD4A1F1ABA8B010009F4B7 /* CodeSnips in Resources */ = {isa = PBXBuildFile; fileRef = 71FD4A1E1ABA8B010009F4B7 /* CodeSnips */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +52,8 @@
 		719288F51AB8FCDA00AEE5E1 /* Stations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stations.swift; sourceTree = "<group>"; };
 		719288F81AB91E3F00AEE5E1 /* AEXML.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AEXML.swift; sourceTree = "<group>"; };
 		719288FB1AB91ECA00AEE5E1 /* BARTStations.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = BARTStations.xml; sourceTree = "<group>"; };
+		71FD4A1C1ABA8A800009F4B7 /* ProjectConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectConstants.swift; sourceTree = "<group>"; };
+		71FD4A1E1ABA8B010009F4B7 /* CodeSnips */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CodeSnips; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +108,8 @@
 				6347C53E1ABA338D00A5D980 /* stationTableViewCell.swift */,
 				6347C53F1ABA338D00A5D980 /* stationTableViewCell.xib */,
 				63D1CFE81ABA3B60007A7C4E /* stationCustomCell.swift */,
+				71FD4A1C1ABA8A800009F4B7 /* ProjectConstants.swift */,
+				71FD4A1E1ABA8B010009F4B7 /* CodeSnips */,
 			);
 			path = KBart;
 			sourceTree = "<group>";
@@ -230,6 +236,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6347C5411ABA338D00A5D980 /* stationTableViewCell.xib in Resources */,
+				71FD4A1F1ABA8B010009F4B7 /* CodeSnips in Resources */,
 				719288DB1AB8FC7200AEE5E1 /* Main.storyboard in Resources */,
 				719288FC1AB91ECA00AEE5E1 /* BARTStations.xml in Resources */,
 				719288E01AB8FC7200AEE5E1 /* LaunchScreen.xib in Resources */,
@@ -256,6 +263,7 @@
 				6347C5401ABA338D00A5D980 /* stationTableViewCell.swift in Sources */,
 				719288D41AB8FC7200AEE5E1 /* AppDelegate.swift in Sources */,
 				719288F61AB8FCDA00AEE5E1 /* Stations.swift in Sources */,
+				71FD4A1D1ABA8A800009F4B7 /* ProjectConstants.swift in Sources */,
 				63D1CFE91ABA3B60007A7C4E /* stationCustomCell.swift in Sources */,
 				719288D61AB8FC7200AEE5E1 /* FirstViewController.swift in Sources */,
 			);
