@@ -8,27 +8,123 @@
 
 import Foundation
 
-//class DepartureStation
-//{
-//    var minutes : String
-//    var platform : String
-//    var direction : String
-//    var length : String
-//    var lineColor : String
-//    var lineColorHex : String
-//    var bikeFlat : String
-//}
-//class DepartureStations
-//{
-//    var departureStations:[String:DepartureStation]
-//    var departureStationsArray : [DepartureStation]
-//    
-//    init()
-//    {
-//        self.departureStations = [:]
-//        self.departureStationsArray = [DepartureStation]()
-//    }
-//}
+class DepartingTrain
+{
+    
+    var minutes : String
+    var platform : String
+    var direction : String
+    var length : String
+    var lineColor : String
+    var lineColorHex : String
+    var bike : String
+    
+    init()
+    {
+        minutes = "minutes"
+        platform = "platform"
+        direction = "direction"
+        length = "length"
+        lineColor = "line color"
+        lineColorHex = "line color hex"
+        bike = "bike flag"
+    }
+}
+
+class DepartureStation
+{
+    var name:String
+    var abbr:String
+    
+    var departingTrainsArray : [DepartingTrain]
+    
+    init()
+    {
+        name = "name"
+        abbr = "abbr"
+        
+        self.departingTrainsArray = [DepartingTrain]()
+    }
+}
+
+class DepartureStations
+{
+    var departureStations:[String:DepartureStation]
+    var departureStationsArray : [DepartureStation]
+    var stationAbbrev:String
+    
+    init()
+    {
+        self.departureStations = [:]
+        self.departureStationsArray = [DepartureStation]()
+        
+        stationAbbrev = ""
+    }
+    init(fromStationAbbrev _stationAbbrev:String, updateNow _update:Bool = false)
+    {
+        self.departureStations = [:]
+        self.departureStationsArray = [DepartureStation]()
+        
+        stationAbbrev = _stationAbbrev
+        
+        if(_update)
+        {
+            UpdateEDT()
+        }
+    }
+    
+    func UpdateEDT()
+    {
+        departureStations.removeAll()
+        departureStationsArray.removeAll()
+        
+        let urlPath:String = "http://api.bart.gov/api/etd.aspx?cmd=etd&orig=\(stationAbbrev)&key=\(BARTAPI_LIC_KEY)"
+        
+        var url: NSURL = NSURL(string: urlPath)!
+        var request1: NSURLRequest = NSURLRequest(URL: url)
+        var response: AutoreleasingUnsafeMutablePointer<NSURLResponse?>=nil
+        var error: NSErrorPointer = nil
+        var dataVal: NSData =  NSURLConnection.sendSynchronousRequest(request1, returningResponse: response, error:nil)!
+        
+        var errorData: NSError?
+        if let doc = AEXMLDocument(xmlData: dataVal, error: &errorData)
+        {
+            var parsedText = String()
+            
+            for stat in doc["root"]["station"]["edt"].all!
+            {
+                var departingStationKey = stat["abbreviation"].stringValue
+                
+                var newStation :DepartureStation = DepartureStation()
+
+                newStation.name = stat["destination"].stringValue
+                newStation.abbr = stat["abbreviation"].stringValue
+                
+                for train in stat["estimate"].all!
+                {
+                    var newTrain :DepartingTrain = DepartingTrain()
+                    
+                    newTrain.minutes = train["minutes"].stringValue
+                    newTrain.platform = train["platform"].stringValue
+                    newTrain.direction = train["direction"].stringValue
+                    newTrain.length = train["length"].stringValue
+                    newTrain.lineColor = train["color"].stringValue
+                    newTrain.lineColorHex = train["hexcolor"].stringValue
+                    newTrain.bike = train["bikeflag"].stringValue
+                    
+                    newStation.departingTrainsArray.append(newTrain)
+                }
+                self.departureStations[departingStationKey] = newStation
+                self.departureStationsArray.append(newStation)
+            }
+        }
+        else
+        {
+            let err = "description: \(errorData?.localizedDescription)\ninfo: \(errorData?.userInfo)"
+        }
+        
+    }
+}
 
 
 
@@ -88,13 +184,13 @@ class StationList
         stationArray = [Station]()
     }
     
-     subscript(key: String) -> Station
-    {
-        var Stat : Station = stations[key]!
-        return Stat
+    subscript(key: String) -> Station
+        {
+            var Stat : Station = stations[key]!
+            return Stat
     }
-     subscript(key: Int) -> Station
-    {
+    subscript(key: Int) -> Station
+        {
             var Stat : Station = stationArray[key]
             return Stat
     }
@@ -104,7 +200,7 @@ class StationList
         return stations.count
     }
     
-
+    
     
     func ReadStations_AEXML()
     {
@@ -145,6 +241,6 @@ class StationList
             let err = "description: \(errorData?.localizedDescription)\ninfo: \(errorData?.userInfo)"
         }
     }
-
+    
     
 }

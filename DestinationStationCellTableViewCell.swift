@@ -1,17 +1,15 @@
 //
-//  stationTableViewCell.swift
+//  DestinationStationCellTableViewCell.swift
 //  KBart
 //
-//  Created by Kenneth Ceglia on 3/18/15.
+//  Created by KenCeglia on 3/19/15.
 //  Copyright (c) 2015 KenCeglia. All rights reserved.
 //
 
 import UIKit
 
-class stationTableViewCell: UITableViewCell {
+class DestinationStationCellTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var stationName: UILabel!
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
