@@ -46,30 +46,13 @@ class VCStationList: UIViewController , UITableViewDelegate , UITableViewDataSou
     }
     
     
-//    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
-//    {
-//        
-//        var cellIdentifier:String = "stationCell"
-//        var cell:stationTableViewCell? = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as? stationTableViewCell
-//        if (cell == nil)
-//        {
-//            var nib:Array = NSBundle.mainBundle().loadNibNamed("stationTableViewCell", owner: self, options: nil)
-//            cell = nib[0] as? stationTableViewCell
-//        }
-//        
-//        // Configure the cell...
-//        var stat = stationList[indexPath.row]
-//        
-//        cell?.stationName.text = stat.name
-//        
-//        return cell!
-//    }
+
     
-    func configureTableView()
-    {
-        stationTable.rowHeight = UITableViewAutomaticDimension
-        stationTable.estimatedRowHeight = 160.0
-    }
+//    func configureTableView()
+//    {
+//        stationTable.rowHeight = UITableViewAutomaticDimension
+//        stationTable.estimatedRowHeight = 160.0
+//    }
     
     func isLandscapeOrientation() -> Bool {
         return UIInterfaceOrientationIsLandscape(UIApplication.sharedApplication().statusBarOrientation)
@@ -90,13 +73,6 @@ class VCStationList: UIViewController , UITableViewDelegate , UITableViewDataSou
         return cell!
     }
 
-
-//    func basicCellAtIndexPath(indexPath:NSIndexPath) -> BasicCell {
-//        let cell = tableView.dequeueReusableCellWithIdentifier(customCellClassIdentifierName) as customCellClass
-//        setTitleForCell(cell, indexPath: indexPath)
-//        setSubtitleForCell(cell, indexPath: indexPath)
-//        return cell
-//    }
 
 }
 
