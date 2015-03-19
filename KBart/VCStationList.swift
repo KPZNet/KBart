@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SecondViewController: UIViewController , UITableViewDelegate , UITableViewDataSource{
+class VCStationList: UIViewController , UITableViewDelegate , UITableViewDataSource{
 
     @IBOutlet weak var stationTable: UITableView!
     var stationList : StationList!
@@ -19,6 +19,7 @@ class SecondViewController: UIViewController , UITableViewDelegate , UITableView
         
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         stationList = appDelegate.stationList
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,16 +46,48 @@ class SecondViewController: UIViewController , UITableViewDelegate , UITableView
     }
     
     
+//    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+//    {
+//        
+//        var cellIdentifier:String = "stationCell"
+//        var cell:stationTableViewCell? = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as? stationTableViewCell
+//        if (cell == nil)
+//        {
+//            var nib:Array = NSBundle.mainBundle().loadNibNamed("stationTableViewCell", owner: self, options: nil)
+//            cell = nib[0] as? stationTableViewCell
+//        }
+//        
+//        // Configure the cell...
+//        var stat = stationList[indexPath.row]
+//        
+//        cell?.stationName.text = stat.name
+//        
+//        return cell!
+//    }
+    
+    func configureTableView()
+    {
+        stationTable.rowHeight = UITableViewAutomaticDimension
+        stationTable.estimatedRowHeight = 160.0
+    }
+    
+    func isLandscapeOrientation() -> Bool {
+        return UIInterfaceOrientationIsLandscape(UIApplication.sharedApplication().statusBarOrientation)
+    }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCellWithIdentifier("stationBasicCell", forIndexPath: indexPath) as UITableViewCell
+        
+        var cellIdentifier:String = "stationCustomCell"
+        var cell:stationCustomCell? = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as? stationCustomCell
+
         
         // Configure the cell...
         var stat = stationList[indexPath.row]
         
-        cell.textLabel?.text = stat.name
+        cell?.stationName.text = stat.name
         
-        return cell
+        return cell!
     }
 
 

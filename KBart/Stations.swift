@@ -8,6 +8,30 @@
 
 import Foundation
 
+class DepartureStation
+{
+    var minutes : String
+    var platform : String
+    var direction : String
+    var length : String
+    var lineColor : String
+    var lineColorHex : String
+    var bikeFlat : String
+}
+class DepartureStations
+{
+    var departureStations:[String:DepartureStation]
+    var departureStationsArray : [DepartureStation]
+    
+    init()
+    {
+        self.departureStations = [:]
+        self.departureStationsArray = [DepartureStation]()
+    }
+}
+
+
+
 class Station
 {
     var name : String
@@ -85,7 +109,8 @@ class StationList
     func ReadStations_AEXML()
     {
         
-        if let xmlPath = NSBundle.mainBundle().pathForResource("BARTStations", ofType: "xml") {
+        if let xmlPath = NSBundle.mainBundle().pathForResource("BARTStations", ofType: "xml")
+        {
             if let data = NSData(contentsOfFile: xmlPath)
             {
                 var error: NSError?
@@ -108,7 +133,7 @@ class StationList
                             fromZipCode:stat["zipcode"].stringValue)
                         
                         self.stations[stationKey] = newStation
-                        self.stationArray.insert(newStation, atIndex: 0)
+                        self.stationArray.append(newStation)
                     }
                 }
                 else
