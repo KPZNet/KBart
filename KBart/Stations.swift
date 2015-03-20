@@ -8,6 +8,33 @@
 
 import Foundation
 
+func GetBART_Stations() -> NSData
+{
+    let urlPath:String = "http://api.bart.gov/api/stn.aspx?cmd=stns&key=\(BARTAPI_LIC_KEY)"
+    var url: NSURL = NSURL(string: urlPath)!
+    var request1: NSURLRequest = NSURLRequest(URL: url)
+    var response: AutoreleasingUnsafeMutablePointer<NSURLResponse?>=nil
+    var error: NSErrorPointer = nil
+    var dataVal: NSData =  NSURLConnection.sendSynchronousRequest(request1, returningResponse: response, error:nil)!
+    
+    return dataVal
+}
+
+func GetBART_EstimatedTrainDepartures(forStation _forStation : String) -> NSData
+{
+    let urlPath:String = "http://api.bart.gov/api/etd.aspx?cmd=etd&orig=\(_forStation)&key=\(BARTAPI_LIC_KEY)"
+    
+    var url: NSURL = NSURL(string: urlPath)!
+    var request1: NSURLRequest = NSURLRequest(URL: url)
+    var response: AutoreleasingUnsafeMutablePointer<NSURLResponse?>=nil
+    var error: NSErrorPointer = nil
+    var dataVal: NSData =  NSURLConnection.sendSynchronousRequest(request1, returningResponse: response, error:nil)!
+    
+    return dataVal
+}
+
+
+
 class DepartingTrain
 {
     
@@ -31,7 +58,7 @@ class DepartingTrain
     }
 }
 
-class DepartureStation
+class DestinationStation
 {
     var name:String
     var abbr:String
@@ -53,23 +80,23 @@ class DepartureStation
     }
 }
 
-class DepartureStations
+class DestinationStations
 {
-    var stations:[String:DepartureStation]
-    var stationArray : [DepartureStation]
+    var stations:[String:DestinationStation]
+    var stationArray : [DestinationStation]
     var stationAbbr:String
     
     init()
     {
         self.stations = [:]
-        self.stationArray = [DepartureStation]()
+        self.stationArray = [DestinationStation]()
         
         stationAbbr = ""
     }
     init(fromStationAbbrev _trainStationAbbrev:String, updateNow _update:Bool = false)
     {
         self.stations = [:]
-        self.stationArray = [DepartureStation]()
+        self.stationArray = [DestinationStation]()
         
         stationAbbr = _trainStationAbbrev
         
@@ -79,14 +106,14 @@ class DepartureStations
         }
     }
     
-    subscript(key: String) -> DepartureStation
+    subscript(key: String) -> DestinationStation
         {
-            var Stat : DepartureStation = stations[key]!
+            var Stat : DestinationStation = stations[key]!
             return Stat
     }
-    subscript(key: Int) -> DepartureStation
+    subscript(key: Int) -> DestinationStation
         {
-            var Stat : DepartureStation = stationArray[key]
+            var Stat : DestinationStation = stationArray[key]
             return Stat
     }
     
@@ -95,18 +122,14 @@ class DepartureStations
         stationAbbr = _trainStationAbbrev
         UpdateEDT()
     }
+    
+    
     func UpdateEDT()
     {
         stations.removeAll()
         stationArray.removeAll()
         
-        let urlPath:String = "http://api.bart.gov/api/etd.aspx?cmd=etd&orig=\(stationAbbr)&key=\(BARTAPI_LIC_KEY)"
-        
-        var url: NSURL = NSURL(string: urlPath)!
-        var request1: NSURLRequest = NSURLRequest(URL: url)
-        var response: AutoreleasingUnsafeMutablePointer<NSURLResponse?>=nil
-        var error: NSErrorPointer = nil
-        var dataVal: NSData =  NSURLConnection.sendSynchronousRequest(request1, returningResponse: response, error:nil)!
+        let dataVal = GetBART_EstimatedTrainDepartures(forStation: stationAbbr)
         
         var errorData: NSError?
         if let doc = AEXMLDocument(xmlData: dataVal, error: &errorData)
@@ -119,7 +142,7 @@ class DepartureStations
                 {
                     var departingStationKey = stat["abbreviation"].stringValue
                     
-                    var newStation :DepartureStation = DepartureStation()
+                    var newStation :DestinationStation = DestinationStation()
                     
                     newStation.name = stat["destination"].stringValue
                     newStation.abbr = stat["abbreviation"].stringValue
@@ -227,18 +250,12 @@ class StationList
         return stations.count
     }
     
-    
+
     
     func ReadStations_AEXML()
     {
         
-        let urlPath:String = "http://api.bart.gov/api/stn.aspx?cmd=stns&key=\(BARTAPI_LIC_KEY)"
-        var url: NSURL = NSURL(string: urlPath)!
-        var request1: NSURLRequest = NSURLRequest(URL: url)
-        var response: AutoreleasingUnsafeMutablePointer<NSURLResponse?>=nil
-        var error: NSErrorPointer = nil
-        var dataVal: NSData =  NSURLConnection.sendSynchronousRequest(request1, returningResponse: response, error:nil)!
-        
+        var dataVal = GetBART_Stations()
         
         var errorData: NSError?
         if let doc = AEXMLDocument(xmlData: dataVal, error: &errorData)
