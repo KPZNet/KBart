@@ -73,6 +73,11 @@ class DepartureStations
         }
     }
     
+    func UpdateEDT(fromStationAbbrev _fromStationAbbrev:String)
+    {
+        stationAbbrev = _fromStationAbbrev
+        UpdateEDT()
+    }
     func UpdateEDT()
     {
         departureStations.removeAll()
@@ -91,7 +96,7 @@ class DepartureStations
         {
             var parsedText = String()
             
-            for stat in doc["root"]["station"]["edt"].all!
+            for stat in doc["root"]["station"]["etd"].all!
             {
                 var departingStationKey = stat["abbreviation"].stringValue
                 
@@ -140,6 +145,8 @@ class Station
     var state : String
     var zipcode : String
     
+    var departingStations:DepartureStations
+    
     init()
     {
         name = "name"
@@ -151,6 +158,8 @@ class Station
         county = "county"
         state = "state"
         zipcode = "zipcode"
+        
+        departingStations = DepartureStations()
     }
     
     init(fromName _name :String, fromAbbr _abbr:String,
@@ -168,6 +177,8 @@ class Station
         county = _county
         state = _state
         zipcode = _zipCode
+        
+        departingStations = DepartureStations()
     }
 }
 
@@ -231,6 +242,8 @@ class StationList
                     fromCounty:stat["county"].stringValue,
                     fromState:stat["state"].stringValue,
                     fromZipCode:stat["zipcode"].stringValue)
+                
+                newStation.departingStations.UpdateEDT(fromStationAbbrev: stationKey)
                 
                 self.stations[stationKey] = newStation
                 self.stationArray.append(newStation)
