@@ -45,27 +45,33 @@ class DepartureStation
         
         self.departingTrainsArray = [DepartingTrain]()
     }
+    
+    subscript(key: Int) -> DepartingTrain
+        {
+            var Stat : DepartingTrain = departingTrainsArray[key]
+            return Stat
+    }
 }
 
 class DepartureStations
 {
     var departureStations:[String:DepartureStation]
-    var departureStationsArray : [DepartureStation]
-    var stationAbbrev:String
+    var departureStationArray : [DepartureStation]
+    var trainStationAbbr:String
     
     init()
     {
         self.departureStations = [:]
-        self.departureStationsArray = [DepartureStation]()
+        self.departureStationArray = [DepartureStation]()
         
-        stationAbbrev = ""
+        trainStationAbbr = ""
     }
-    init(fromStationAbbrev _stationAbbrev:String, updateNow _update:Bool = false)
+    init(fromStationAbbrev _trainStationAbbrev:String, updateNow _update:Bool = false)
     {
         self.departureStations = [:]
-        self.departureStationsArray = [DepartureStation]()
+        self.departureStationArray = [DepartureStation]()
         
-        stationAbbrev = _stationAbbrev
+        trainStationAbbr = _trainStationAbbrev
         
         if(_update)
         {
@@ -73,17 +79,28 @@ class DepartureStations
         }
     }
     
-    func UpdateEDT(fromStationAbbrev _fromStationAbbrev:String)
+    subscript(key: String) -> DepartureStation
+        {
+            var Stat : DepartureStation = departureStations[key]!
+            return Stat
+    }
+    subscript(key: Int) -> DepartureStation
+        {
+            var Stat : DepartureStation = departureStationArray[key]
+            return Stat
+    }
+    
+    func UpdateEDT(fromStationAbbrev _trainStationAbbrev:String)
     {
-        stationAbbrev = _fromStationAbbrev
+        trainStationAbbr = _trainStationAbbrev
         UpdateEDT()
     }
     func UpdateEDT()
     {
         departureStations.removeAll()
-        departureStationsArray.removeAll()
+        departureStationArray.removeAll()
         
-        let urlPath:String = "http://api.bart.gov/api/etd.aspx?cmd=etd&orig=\(stationAbbrev)&key=\(BARTAPI_LIC_KEY)"
+        let urlPath:String = "http://api.bart.gov/api/etd.aspx?cmd=etd&orig=\(trainStationAbbr)&key=\(BARTAPI_LIC_KEY)"
         
         var url: NSURL = NSURL(string: urlPath)!
         var request1: NSURLRequest = NSURLRequest(URL: url)
@@ -96,31 +113,47 @@ class DepartureStations
         {
             var parsedText = String()
             
-            for stat in doc["root"]["station"]["etd"].all!
+            if(doc["root"]["station"]["etd"].all != nil)
             {
-                var departingStationKey = stat["abbreviation"].stringValue
-                
-                var newStation :DepartureStation = DepartureStation()
-
-                newStation.name = stat["destination"].stringValue
-                newStation.abbr = stat["abbreviation"].stringValue
-                
-                for train in stat["estimate"].all!
+                for stat in doc["root"]["station"]["etd"].all!
                 {
-                    var newTrain :DepartingTrain = DepartingTrain()
+                    var departingStationKey = stat["abbreviation"].stringValue
                     
-                    newTrain.minutes = train["minutes"].stringValue
-                    newTrain.platform = train["platform"].stringValue
-                    newTrain.direction = train["direction"].stringValue
-                    newTrain.length = train["length"].stringValue
-                    newTrain.lineColor = train["color"].stringValue
-                    newTrain.lineColorHex = train["hexcolor"].stringValue
-                    newTrain.bike = train["bikeflag"].stringValue
+                    var newStation :DepartureStation = DepartureStation()
                     
-                    newStation.departingTrainsArray.append(newTrain)
+                    newStation.name = stat["destination"].stringValue
+                    newStation.abbr = stat["abbreviation"].stringValue
+                    
+                    if(stat["estimate"].all != nil)
+                    {
+                        for train in stat["estimate"].all!
+                        {
+                            var newTrain :DepartingTrain = DepartingTrain()
+                            
+                            newTrain.minutes = train["minutes"].stringValue
+                            newTrain.platform = train["platform"].stringValue
+                            newTrain.direction = train["direction"].stringValue
+                            newTrain.length = train["length"].stringValue
+                            newTrain.lineColor = train["color"].stringValue
+                            newTrain.lineColorHex = train["hexcolor"].stringValue
+                            newTrain.bike = train["bikeflag"].stringValue
+                            
+                            newStation.departingTrainsArray.append(newTrain)
+                        }
+                    }
+                    else
+                    {
+                        var msg:String = "Departing Station \(departingStationKey) has no trains"
+                        println(msg)
+                    }
+                    self.departureStations[departingStationKey] = newStation
+                    self.departureStationArray.append(newStation)
                 }
-                self.departureStations[departingStationKey] = newStation
-                self.departureStationsArray.append(newStation)
+            }
+            else
+            {
+                var msg:String = "Station \(trainStationAbbr) has no departures"
+                println(msg)
             }
         }
         else
@@ -135,31 +168,18 @@ class DepartureStations
 
 class Station
 {
-    var name : String
-    var abbr : String
-    var gtfs_latitude : String
-    var gtfs_longitude : String
-    var address : String
-    var city : String
-    var county : String
-    var state : String
-    var zipcode : String
-    
-    var departingStations:DepartureStations
+    var name : String = ""
+    var abbr : String = ""
+    var gtfs_latitude : String = ""
+    var gtfs_longitude : String = ""
+    var address : String = ""
+    var city : String = ""
+    var county : String = ""
+    var state : String = ""
+    var zipcode : String = ""
     
     init()
     {
-        name = "name"
-        abbr = "abbrev"
-        gtfs_latitude = "0"
-        gtfs_longitude = "0"
-        address = "address"
-        city = "city"
-        county = "county"
-        state = "state"
-        zipcode = "zipcode"
-        
-        departingStations = DepartureStations()
     }
     
     init(fromName _name :String, fromAbbr _abbr:String,
@@ -177,22 +197,18 @@ class Station
         county = _county
         state = _state
         zipcode = _zipCode
-        
-        departingStations = DepartureStations()
     }
 }
 
 class StationList
 {
     
-    var stations:[String:Station]
-    var stationArray : [Station]
+    var stations:[String:Station] = [:]
+    var stationArray : [Station] = [Station]()
     
     init()
     {
-        //Create an empty station list
-        self.stations = [:]
-        stationArray = [Station]()
+        
     }
     
     subscript(key: String) -> Station
@@ -229,24 +245,30 @@ class StationList
         {
             var parsedText = String()
             // parse known structure
-            for stat in doc["root"]["stations"]["station"].all!
+            if(doc["root"]["stations"]["station"].all != nil)
             {
-                var stationKey = stat["abbr"].stringValue
-                
-                var newStation :Station = Station(  fromName:stat["name"].stringValue,
-                    fromAbbr:stat["abbr"].stringValue,
-                    fromLatitude:stat["gtfs_latitude"].stringValue,
-                    fromLongitude:stat["gtfs_longitude"].stringValue,
-                    fromAddress:stat["address"].stringValue,
-                    fromCity:stat["city"].stringValue,
-                    fromCounty:stat["county"].stringValue,
-                    fromState:stat["state"].stringValue,
-                    fromZipCode:stat["zipcode"].stringValue)
-                
-                newStation.departingStations.UpdateEDT(fromStationAbbrev: stationKey)
-                
-                self.stations[stationKey] = newStation
-                self.stationArray.append(newStation)
+                for stat in doc["root"]["stations"]["station"].all!
+                {
+                    var stationKey = stat["abbr"].stringValue
+                    
+                    var newStation :Station = Station(  fromName:stat["name"].stringValue,
+                        fromAbbr:stat["abbr"].stringValue,
+                        fromLatitude:stat["gtfs_latitude"].stringValue,
+                        fromLongitude:stat["gtfs_longitude"].stringValue,
+                        fromAddress:stat["address"].stringValue,
+                        fromCity:stat["city"].stringValue,
+                        fromCounty:stat["county"].stringValue,
+                        fromState:stat["state"].stringValue,
+                        fromZipCode:stat["zipcode"].stringValue)
+                    
+                    self.stations[stationKey] = newStation
+                    self.stationArray.append(newStation)
+                }
+            }
+            else
+            {
+                var msg:String = "There are no BART Stations retrieved"
+                println(msg)
             }
         }
         else
