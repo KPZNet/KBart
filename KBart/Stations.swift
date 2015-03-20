@@ -36,42 +36,42 @@ class DepartureStation
     var name:String
     var abbr:String
     
-    var departingTrainsArray : [DepartingTrain]
+    var trainArray : [DepartingTrain]
     
     init()
     {
         name = "name"
         abbr = "abbr"
         
-        self.departingTrainsArray = [DepartingTrain]()
+        self.trainArray = [DepartingTrain]()
     }
     
     subscript(key: Int) -> DepartingTrain
         {
-            var Stat : DepartingTrain = departingTrainsArray[key]
+            var Stat : DepartingTrain = trainArray[key]
             return Stat
     }
 }
 
 class DepartureStations
 {
-    var departureStations:[String:DepartureStation]
-    var departureStationArray : [DepartureStation]
-    var trainStationAbbr:String
+    var stations:[String:DepartureStation]
+    var stationArray : [DepartureStation]
+    var stationAbbr:String
     
     init()
     {
-        self.departureStations = [:]
-        self.departureStationArray = [DepartureStation]()
+        self.stations = [:]
+        self.stationArray = [DepartureStation]()
         
-        trainStationAbbr = ""
+        stationAbbr = ""
     }
     init(fromStationAbbrev _trainStationAbbrev:String, updateNow _update:Bool = false)
     {
-        self.departureStations = [:]
-        self.departureStationArray = [DepartureStation]()
+        self.stations = [:]
+        self.stationArray = [DepartureStation]()
         
-        trainStationAbbr = _trainStationAbbrev
+        stationAbbr = _trainStationAbbrev
         
         if(_update)
         {
@@ -81,26 +81,26 @@ class DepartureStations
     
     subscript(key: String) -> DepartureStation
         {
-            var Stat : DepartureStation = departureStations[key]!
+            var Stat : DepartureStation = stations[key]!
             return Stat
     }
     subscript(key: Int) -> DepartureStation
         {
-            var Stat : DepartureStation = departureStationArray[key]
+            var Stat : DepartureStation = stationArray[key]
             return Stat
     }
     
     func UpdateEDT(fromStationAbbrev _trainStationAbbrev:String)
     {
-        trainStationAbbr = _trainStationAbbrev
+        stationAbbr = _trainStationAbbrev
         UpdateEDT()
     }
     func UpdateEDT()
     {
-        departureStations.removeAll()
-        departureStationArray.removeAll()
+        stations.removeAll()
+        stationArray.removeAll()
         
-        let urlPath:String = "http://api.bart.gov/api/etd.aspx?cmd=etd&orig=\(trainStationAbbr)&key=\(BARTAPI_LIC_KEY)"
+        let urlPath:String = "http://api.bart.gov/api/etd.aspx?cmd=etd&orig=\(stationAbbr)&key=\(BARTAPI_LIC_KEY)"
         
         var url: NSURL = NSURL(string: urlPath)!
         var request1: NSURLRequest = NSURLRequest(URL: url)
@@ -138,7 +138,7 @@ class DepartureStations
                             newTrain.lineColorHex = train["hexcolor"].stringValue
                             newTrain.bike = train["bikeflag"].stringValue
                             
-                            newStation.departingTrainsArray.append(newTrain)
+                            newStation.trainArray.append(newTrain)
                         }
                     }
                     else
@@ -146,13 +146,13 @@ class DepartureStations
                         var msg:String = "Departing Station \(departingStationKey) has no trains"
                         println(msg)
                     }
-                    self.departureStations[departingStationKey] = newStation
-                    self.departureStationArray.append(newStation)
+                    self.stations[departingStationKey] = newStation
+                    self.stationArray.append(newStation)
                 }
             }
             else
             {
-                var msg:String = "Station \(trainStationAbbr) has no departures"
+                var msg:String = "Station \(stationAbbr) has no departures"
                 println(msg)
             }
         }
@@ -243,6 +243,7 @@ class StationList
         var errorData: NSError?
         if let doc = AEXMLDocument(xmlData: dataVal, error: &errorData)
         {
+                        
             var parsedText = String()
             // parse known structure
             if(doc["root"]["stations"]["station"].all != nil)
