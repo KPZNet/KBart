@@ -8,7 +8,7 @@
 
 import Foundation
 
-func GetBART_Stations() -> NSData
+func CallBART_Stations() -> NSData
 {
     let urlPath:String = "http://api.bart.gov/api/stn.aspx?cmd=stns&key=\(BARTAPI_LIC_KEY)"
     var url: NSURL = NSURL(string: urlPath)!
@@ -19,6 +19,62 @@ func GetBART_Stations() -> NSData
     
     return dataVal
 }
+
+func LoadBARTStations(fromAEXMLDocument doc : AEXMLDocument, withStationList _stationList:StationList) -> StationList
+{
+    
+    var parsedText = String()
+    // parse known structure
+    if(doc["root"]["stations"]["station"].all != nil)
+    {
+        for stat in doc["root"]["stations"]["station"].all!
+        {
+            var stationKey = stat["abbr"].stringValue
+            
+            var newStation :Station = Station(  fromName:stat["name"].stringValue,
+                fromAbbr:stat["abbr"].stringValue,
+                fromLatitude:stat["gtfs_latitude"].stringValue,
+                fromLongitude:stat["gtfs_longitude"].stringValue,
+                fromAddress:stat["address"].stringValue,
+                fromCity:stat["city"].stringValue,
+                fromCounty:stat["county"].stringValue,
+                fromState:stat["state"].stringValue,
+                fromZipCode:stat["zipcode"].stringValue)
+            
+            _stationList.stations[stationKey] = newStation
+            _stationList.stationArray.append(newStation)
+        }
+    }
+    else
+    {
+        var msg:String = "There are no BART Stations retrieved"
+        println(msg)
+    }
+    
+    return _stationList
+    
+}
+
+func GetBARTStations(handler: (StationList) -> Void, stationList:StationList)
+{
+    
+    let url:NSURL = NSURL(string:"http://api.bart.gov/api/stn.aspx?cmd=stns&key=\(BARTAPI_LIC_KEY)")!
+    let request:NSURLRequest = NSURLRequest(URL:url)
+    let queue:NSOperationQueue = NSOperationQueue()
+    
+    NSURLConnection.sendAsynchronousRequest(request, queue: queue, completionHandler:
+        { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
+            
+            var errorData: NSError?
+            var doc = AEXMLDocument(xmlData: data, error: &errorData)!
+            
+            LoadBARTStations(fromAEXMLDocument: doc, withStationList: stationList)
+            handler(stationList)
+    })
+    
+
+}
+
 
 func GetBART_EstimatedTrainDepartures(forStation _forStation : String) -> NSData
 {
@@ -33,6 +89,17 @@ func GetBART_EstimatedTrainDepartures(forStation _forStation : String) -> NSData
     return dataVal
 }
 
+func GetBART_EstimatedTrainDepartures2(forStation _forStation : String)
+{
+    let url:NSURL = NSURL(string:"http://api.bart.gov/api/etd.aspx?cmd=etd&orig=\(_forStation)&key=\(BARTAPI_LIC_KEY)")!
+    let request:NSURLRequest = NSURLRequest(URL:url)
+    let queue:NSOperationQueue = NSOperationQueue()
+    
+    NSURLConnection.sendAsynchronousRequest(request, queue: queue, completionHandler:
+        { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
+        /* Your code */
+    })
+}
 
 
 class DepartingTrain
@@ -102,7 +169,7 @@ class DestinationStations
         
         if(_update)
         {
-            UpdateEDT()
+            UpdateEDTSynch_AEXML()
         }
     }
     
@@ -117,14 +184,28 @@ class DestinationStations
             return Stat
     }
     
-    func UpdateEDT(fromStationAbbrev _trainStationAbbrev:String)
+
+    
+    func UpdateEDTSynch_AEXML()
     {
-        stationAbbr = _trainStationAbbrev
-        UpdateEDT()
+        stations.removeAll()
+        stationArray.removeAll()
+        
+        var dataVal = GetBART_EstimatedTrainDepartures(forStation: stationAbbr)
+        
+        var errorData: NSError?
+        if let doc = AEXMLDocument(xmlData: dataVal, error: &errorData)
+        {
+            PushEDT_AEXML(fromAEXMLDocument: doc)
+        }
+        else
+        {
+            let err = "description: \(errorData?.localizedDescription)\ninfo: \(errorData?.userInfo)"
+        }
+        
     }
     
-    
-    func UpdateEDT()
+    func PushEDT_AEXML(fromAEXMLDocument doc : AEXMLDocument)
     {
         stations.removeAll()
         stationArray.removeAll()
@@ -248,51 +329,6 @@ class StationList
     func NumberOfStations() -> Int
     {
         return stations.count
-    }
-    
-
-    
-    func ReadStations_AEXML()
-    {
-        
-        var dataVal = GetBART_Stations()
-        
-        var errorData: NSError?
-        if let doc = AEXMLDocument(xmlData: dataVal, error: &errorData)
-        {
-                        
-            var parsedText = String()
-            // parse known structure
-            if(doc["root"]["stations"]["station"].all != nil)
-            {
-                for stat in doc["root"]["stations"]["station"].all!
-                {
-                    var stationKey = stat["abbr"].stringValue
-                    
-                    var newStation :Station = Station(  fromName:stat["name"].stringValue,
-                        fromAbbr:stat["abbr"].stringValue,
-                        fromLatitude:stat["gtfs_latitude"].stringValue,
-                        fromLongitude:stat["gtfs_longitude"].stringValue,
-                        fromAddress:stat["address"].stringValue,
-                        fromCity:stat["city"].stringValue,
-                        fromCounty:stat["county"].stringValue,
-                        fromState:stat["state"].stringValue,
-                        fromZipCode:stat["zipcode"].stringValue)
-                    
-                    self.stations[stationKey] = newStation
-                    self.stationArray.append(newStation)
-                }
-            }
-            else
-            {
-                var msg:String = "There are no BART Stations retrieved"
-                println(msg)
-            }
-        }
-        else
-        {
-            let err = "description: \(errorData?.localizedDescription)\ninfo: \(errorData?.userInfo)"
-        }
     }
     
     

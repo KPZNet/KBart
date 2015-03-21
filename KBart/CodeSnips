@@ -63,3 +63,51 @@
 //
 //        return cell!
 //    }
+
+-----------------------------------
+
+
+let url:NSURL = NSURL(string:"http://api.bart.gov/api/etd.aspx?cmd=etd&orig=\(_forStation)&key=\(BARTAPI_LIC_KEY)")!
+let request:NSURLRequest = NSURLRequest(URL:url)
+let queue:NSOperationQueue = NSOperationQueue()
+
+NSURLConnection.sendAsynchronousRequest(request, queue: queue, completionHandler:
+{ response, data, error in /* Your code */ })
+
+NSURLConnection.sendAsynchronousRequest(request, queue: queue, completionHandler:
+{ (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
+/* Your code */
+})
+
+
+--------------------------------------
+
+class Timer {
+var timer = NSTimer()
+var handler: (Int) -> Void
+
+init(duration: Int, handler: (Int) -> Void) {
+self.duration = duration
+self.handler = handler
+self.start()
+}
+@objc func someMethod() {
+self.handler(10)
+}
+}
+
+
+class SecondViewController: UIViewController {
+
+var timer: Timer = Timer(duration: 5, handler: SecondViewController.displayTimeRemaining)
+
+class func displayTimeRemaining(counter: Int) -> Void {
+println(counter)
+}
+
+---------------------------------
+
+let critLock = NSLock()
+
+---------------------------------
+

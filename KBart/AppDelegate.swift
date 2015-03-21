@@ -15,11 +15,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var stationList : StationList = StationList()
 
+    class func RStationList(stat : StationList) -> Void
+    {
+        
+    }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
-        stationList.ReadStations_AEXML()
+        GetBARTStations(AppDelegate.RStationList, stationList)
         
         return true
     }
