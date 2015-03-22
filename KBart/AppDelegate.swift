@@ -57,6 +57,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         dispatch_async(bqueue_serial,
         {
             self.stationList = GetBARTStationsFile()
+            
+            dispatch_get_main_queue()
         })
         
         
