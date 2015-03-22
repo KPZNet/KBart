@@ -17,8 +17,12 @@ class VCStationList: UIViewController , UITableViewDelegate , UITableViewDataSou
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-        stationList = appDelegate.stationList
+        dispatch_sync(Getbqueue_serial(),
+            {
+                self.stationList = GetAppDelegate().stationList
+        })
+
+
 
     }
 
@@ -42,7 +46,7 @@ class VCStationList: UIViewController , UITableViewDelegate , UITableViewDataSou
     {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return stationList.NumberOfStations()
+        return stationList!.NumberOfStations()
     }
     
     
@@ -66,7 +70,7 @@ class VCStationList: UIViewController , UITableViewDelegate , UITableViewDataSou
 
         
         // Configure the cell...
-        var stat = stationList[indexPath.row]
+        var stat = stationList![indexPath.row]
         
         cell?.stationName.text = stat.name
         

@@ -8,22 +8,57 @@
 
 import UIKit
 
+func GetAppDelegate() -> AppDelegate
+{
+    let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+    return appDelegate
+}
+
+func Getbqueue_serial() -> dispatch_queue_t
+{
+    let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+    return appDelegate.bqueue_serial
+}
+
+func Getbqueue_concur() -> dispatch_queue_t
+{
+    let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+    return appDelegate.bqueue_concur
+}
+
+func GetStationList() -> StationList
+{
+    let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+    return appDelegate.stationList!
+}
+
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    var stationList : StationList = StationList()
+    var stationList : StationList?
+    
+    var bqueue_serial: dispatch_queue_t = dispatch_queue_create("bqueues", DISPATCH_QUEUE_SERIAL);
+    var bqueue_concur: dispatch_queue_t = dispatch_queue_create("bqueuec", DISPATCH_QUEUE_CONCURRENT);
+
 
     class func RStationList(stat : StationList) -> Void
     {
-        
+        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        appDelegate.stationList = stat
     }
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
+    {
         // Override point for customization after application launch.
         
-        GetBARTStations(AppDelegate.RStationList, stationList)
+        dispatch_async(bqueue_serial,
+        {
+            self.stationList = GetBARTStationsFile()
+        })
+        
         
         return true
     }
