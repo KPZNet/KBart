@@ -1,5 +1,5 @@
 //
-//  KTViewController.swift
+//  ExampleChildViewController.swift
 //  KBart
 //
 //  Created by KenCeglia on 3/22/15.
@@ -8,14 +8,13 @@
 
 import UIKit
 
-class KTViewController: UIViewController {
+class ExampleChildViewController: UIViewController {
     
     var pViewController:UIViewController?
-
     
     convenience init(forController _forController:UIViewController)
     {
-        self.init(nibName : "KTViewController", bundle : nil)
+        self.init(nibName : "ExampleChildViewController", bundle : nil)
         self.pViewController = _forController
     }
     @IBAction func OnClose(sender: AnyObject)
@@ -28,39 +27,40 @@ class KTViewController: UIViewController {
         self.pViewController?.view.addSubview(self.view)
         /*
         dispatch_async(dispatch_get_main_queue(),
-            {
-                self.pViewController?.view.addSubview(self.view)
-                self.view.transform = CGAffineTransformMakeScale(0.0, 0.0)
-                self.view.alpha = 0
-                UIView.animateWithDuration(0.25, animations:
-                    {
-                        self.view.alpha = 1;
-                        self.view.transform = CGAffineTransformMakeScale(1, 1);
-                })
+        {
+        self.pViewController?.view.addSubview(self.view)
+        self.view.transform = CGAffineTransformMakeScale(0.0, 0.0)
+        self.view.alpha = 0
+        UIView.animateWithDuration(0.25, animations:
+        {
+        self.view.alpha = 1;
+        self.view.transform = CGAffineTransformMakeScale(1, 1);
+        })
         })
         */
-
+        
     }
     func CloseView()
     {
         self.view.removeFromSuperview()
         /*
         dispatch_async(dispatch_get_main_queue(),
-            {
-                /*
-                self.view.alpha = 1;
-                self.view.transform = CGAffineTransformMakeScale(1, 1);
-                UIView.animateWithDuration(2.0, animations:
-                    {
-                        self.view.alpha = 0;
-                        self.view.transform = CGAffineTransformMakeScale(0, 0);
-                    })
-                */
-                self.view.removeFromSuperview()
+        {
+        /*
+        self.view.alpha = 1;
+        self.view.transform = CGAffineTransformMakeScale(1, 1);
+        UIView.animateWithDuration(2.0, animations:
+        {
+        self.view.alpha = 0;
+        self.view.transform = CGAffineTransformMakeScale(0, 0);
+        })
+        */
+        self.view.removeFromSuperview()
         })
         */
         
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

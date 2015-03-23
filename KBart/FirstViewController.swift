@@ -11,11 +11,11 @@ import UIKit
 
 class FirstViewController: UIViewController
 {
-    var ktView:KTViewController?
+    var ktView:ExampleChildViewController?
     
     @IBAction func OnKTView(sender: AnyObject)
     {
-        ktView = KTViewController(forController: self)
+        ktView = ExampleChildViewController(forController: self)
         
         ktView?.ShowView()
     }
