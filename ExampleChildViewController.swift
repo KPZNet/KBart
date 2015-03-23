@@ -8,7 +8,7 @@
 
 import UIKit
 
-
+let XIB_NAME:String = "ExampleChildViewController"
 
 class ExampleChildViewController: UIViewController {
     
@@ -18,14 +18,16 @@ class ExampleChildViewController: UIViewController {
     
     var pViewController:UIViewController?
     
-    convenience init(forController _forController:UIViewController)
+
+    convenience init(forController _forController:UIViewController )
     {
-        self.init(nibName : "ExampleChildViewController", bundle : nil)
+        self.init(nibName : XIB_NAME, bundle : nil)
         self.pViewController = _forController
     }
+    
     convenience init(forController _forController:UIViewController, ViewPlacement _placement:ViewPlacementEnum, CustomPlacement _customPlacement:CGFloat = 0.0)
     {
-        self.init(nibName : "ExampleChildViewController", bundle : nil)
+        self.init(nibName : XIB_NAME, bundle : nil)
         self.pViewController = _forController
         
         Placement(Placement: _placement, CustomPlacement: _customPlacement)
