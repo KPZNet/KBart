@@ -25,6 +25,16 @@ class ExampleChildViewController: UIViewController {
     func ShowView()
     {
         self.pViewController?.view.addSubview(self.view)
+        
+        var pViewHeight : CGFloat = pViewController!.view!.bounds.height
+        var selfHalfHeight : CGFloat = self.view.bounds.height / 2
+        
+        var topPlace : CGFloat = pViewHeight * 0.1
+        
+        self.view.center = pViewController!.view!.center
+        self.view.center.y = selfHalfHeight + topPlace
+        
+        
         /*
         dispatch_async(dispatch_get_main_queue(),
         {
