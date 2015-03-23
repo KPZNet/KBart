@@ -15,7 +15,8 @@ class FirstViewController: UIViewController
     
     @IBAction func OnKTView(sender: AnyObject)
     {
-        ktView = ExampleChildViewController(forController: self)
+        ktView = ExampleChildViewController(forController: self, ViewPlacement:
+            ViewPlacementEnum.bottom)
         
         ktView?.ShowView()
     }

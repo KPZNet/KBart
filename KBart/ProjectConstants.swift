@@ -12,6 +12,7 @@ import UIKit
 
 let BARTAPI_LIC_KEY:String = "ZUKP-YX9M-Q5DQ-8UTV"
 
+enum ViewPlacementEnum {case top, center, bottom, custom}
 
 func ClassName(forObject _forObject:Any) -> String
 {

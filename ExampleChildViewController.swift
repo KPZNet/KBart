@@ -8,7 +8,13 @@
 
 import UIKit
 
+
+
 class ExampleChildViewController: UIViewController {
+    
+    
+    private var viewPlacement : ViewPlacementEnum = ViewPlacementEnum.top
+    private var customPlacement : CGFloat = 0.0
     
     var pViewController:UIViewController?
     
@@ -17,23 +23,55 @@ class ExampleChildViewController: UIViewController {
         self.init(nibName : "ExampleChildViewController", bundle : nil)
         self.pViewController = _forController
     }
+    convenience init(forController _forController:UIViewController, ViewPlacement _placement:ViewPlacementEnum, CustomPlacement _customPlacement:CGFloat = 0.0)
+    {
+        self.init(nibName : "ExampleChildViewController", bundle : nil)
+        self.pViewController = _forController
+        
+        Placement(Placement: _placement, CustomPlacement: _customPlacement)
+    }
+    func Placement(Placement _placement:ViewPlacementEnum, CustomPlacement _customPlacement:CGFloat = 0.0)
+    {
+        viewPlacement = _placement
+        customPlacement = _customPlacement
+    }
     @IBAction func OnClose(sender: AnyObject)
     {
         self.CloseView()
     }
     
+    private func PlaceView()
+    {
+        var pViewHeight : CGFloat = pViewController!.view!.bounds.height
+        var selfHalfHeight : CGFloat = self.view.bounds.height / 2
+        var selfHeight : CGFloat = self.view.bounds.height
+        
+        switch viewPlacement
+        {
+        case ViewPlacementEnum.top:
+            self.view.center = pViewController!.view!.center
+            self.view.center.y = selfHalfHeight + (pViewHeight * 0.1)
+           
+        case ViewPlacementEnum.center:
+            self.view.center = pViewController!.view!.center
+            
+        case ViewPlacementEnum.bottom:
+            self.view.center = pViewController!.view!.center
+            self.view.center.y = (pViewHeight - (pViewHeight * 0.1)) - selfHalfHeight
+            
+        case ViewPlacementEnum.custom:
+            self.view.center = pViewController!.view!.center
+            self.view.center.y = selfHalfHeight + (pViewHeight * customPlacement)
+        
+        default:
+            self.view.center = pViewController!.view!.center
+        }
+    }
+    
     func ShowView()
     {
         self.pViewController?.view.addSubview(self.view)
-        
-        var pViewHeight : CGFloat = pViewController!.view!.bounds.height
-        var selfHalfHeight : CGFloat = self.view.bounds.height / 2
-        
-        var topPlace : CGFloat = pViewHeight * 0.1
-        
-        self.view.center = pViewController!.view!.center
-        self.view.center.y = selfHalfHeight + topPlace
-        
+        PlaceView()
         
         /*
         dispatch_async(dispatch_get_main_queue(),
