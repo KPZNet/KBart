@@ -111,6 +111,36 @@ let critLock = NSLock()
 
 ---------------------------------
 
+func ClassName(forObject _forObject:Any) -> String
+{
+return _stdlib_getDemangledTypeName(_forObject).componentsSeparatedByString(".").last!
+}
+
+-------------------------------------
+
 dispatch_get_global_queue
 
 ---------------------------------
+
+var ktView:KTViewController = KTViewController(nibName : "KTViewController", bundle : nil)
+
+@IBAction func OnKTView(sender: AnyObject)
+{
+dispatch_async(dispatch_get_main_queue(),
+{
+self.view.addSubview(self.ktView.view)
+self.ktView.view.transform = CGAffineTransformMakeScale(0.1, 0.1)
+self.ktView.view.alpha = 0
+UIView.animateWithDuration(0.25, animations:
+{
+self.ktView.view.alpha = 1;
+self.ktView.view.transform = CGAffineTransformMakeScale(1, 1);
+})
+})
+
+
+
+}
+
+
+------------------------------------

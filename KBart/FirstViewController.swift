@@ -11,6 +11,29 @@ import UIKit
 
 class FirstViewController: UIViewController
 {
+    var ktView:KTViewController = KTViewController(nibName : "KTViewController", bundle : nil)
+    
+    @IBAction func OnKTView(sender: AnyObject)
+    {
+        dispatch_async(dispatch_get_main_queue(),
+            {
+                self.view.addSubview(self.ktView.view)
+                self.ktView.view.transform = CGAffineTransformMakeScale(0.1, 0.1)
+                self.ktView.view.alpha = 0
+                UIView.animateWithDuration(0.25, animations:
+                    {
+                    self.ktView.view.alpha = 1;
+                    self.ktView.view.transform = CGAffineTransformMakeScale(1, 1);
+                })
+        })
+        
+        
+        var st:String = _stdlib_getDemangledTypeName(ktView).componentsSeparatedByString(".").last!
+        
+        
+
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()

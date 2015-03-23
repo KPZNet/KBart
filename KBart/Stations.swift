@@ -80,6 +80,7 @@ func GetBARTStationsAsynch(handler: (StationList) -> Void)
     let url:NSURL = NSURL(string:"http://api.bart.gov/api/stn.aspx?cmd=stns&key=\(BARTAPI_LIC_KEY)")!
     let request:NSURLRequest = NSURLRequest(URL:url)
     let queue:NSOperationQueue = NSOperationQueue()
+    let queuebert = dispatch_get_main_queue()
     
     NSURLConnection.sendAsynchronousRequest(request, queue: queue, completionHandler:
         { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
