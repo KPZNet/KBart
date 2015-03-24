@@ -26,11 +26,7 @@ func Getbqueue_concur() -> dispatch_queue_t
     return appDelegate.bqueue_concur
 }
 
-func GetStationList() -> StationList
-{
-    let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-    return appDelegate.stationList!
-}
+
 
 
 @UIApplicationMain
@@ -43,12 +39,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var bqueue_serial: dispatch_queue_t = dispatch_queue_create("bqueues", DISPATCH_QUEUE_SERIAL);
     var bqueue_concur: dispatch_queue_t = dispatch_queue_create("bqueuec", DISPATCH_QUEUE_CONCURRENT);
 
-
-    class func RStationList(stat : StationList) -> Void
-    {
-        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-        appDelegate.stationList = stat
-    }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
     {

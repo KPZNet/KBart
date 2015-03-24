@@ -56,6 +56,7 @@ func Load_AEXML_into_BART_Stations(fromAEXMLDocument doc : AEXMLDocument, withSt
 }
 func GetBARTStationsLive() -> StationList
 {
+    sleep(10)
     var data = CallBARTAPI_Stations();
     var errorData: NSError?
     var doc = AEXMLDocument(xmlData: data, error: &errorData)!
@@ -74,7 +75,7 @@ func GetBARTStationsFile() -> StationList
     return stationList
 }
 
-func GetBARTStationsAsynch(handler: (StationList) -> Void)
+func GetBARTStationsLiveAsynch(handler: (StationList) -> Void)
 {
     
     let url:NSURL = NSURL(string:"http://api.bart.gov/api/stn.aspx?cmd=stns&key=\(BARTAPI_LIC_KEY)")!

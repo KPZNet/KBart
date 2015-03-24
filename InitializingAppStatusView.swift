@@ -1,46 +1,58 @@
 //
-//  ExampleChildViewController.swift
+//  InitializingAppStatusView.swift
 //  KBart
 //
-//  Created by KenCeglia on 3/22/15.
+//  Created by KenCeglia on 3/23/15.
 //  Copyright (c) 2015 KenCeglia. All rights reserved.
 //
 
 import UIKit
 
-let XIB_NAME_ExampleChildViewController:String = "ExampleChildViewController"
+let XIB_NAME_InitializingAppStatusView:String = "InitializingAppStatusView"
 
-class ExampleChildViewController: UIViewController {
+class InitializingAppStatusView: UIViewController {
     
     
     
     private var viewPlacement : ViewPlacementEnum = ViewPlacementEnum.top
     private var customPlacement : CGFloat = 0.0
     
+    var cancelCallback: ( () -> Void )?
+    
     var pViewController:UIViewController?
     
-
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    
+    @IBAction func OnCancel(sender: AnyObject)
+    {
+        cancelCallback!()
+    }
+    
+    
     convenience init(forController _forController:UIViewController )
     {
-        self.init(nibName : XIB_NAME_ExampleChildViewController, bundle : nil)
+        self.init(nibName : XIB_NAME_InitializingAppStatusView, bundle : nil)
         self.pViewController = _forController
     }
     
     convenience init(forController _forController:UIViewController, ViewPlacement _placement:ViewPlacementEnum, CustomPlacement _customPlacement:CGFloat = 0.0)
     {
-        self.init(nibName : XIB_NAME_ExampleChildViewController, bundle : nil)
+        self.init(nibName : XIB_NAME_InitializingAppStatusView, bundle : nil)
         self.pViewController = _forController
         
         Placement(Placement: _placement, CustomPlacement: _customPlacement)
     }
+    
+    func SetCancelHandler(handler _handler: () -> Void)
+    {
+       cancelCallback = _handler
+    }
+    
     func Placement(Placement _placement:ViewPlacementEnum, CustomPlacement _customPlacement:CGFloat = 0.0)
     {
         viewPlacement = _placement
         customPlacement = _customPlacement
-    }
-    @IBAction func OnClose(sender: AnyObject)
-    {
-        self.CloseView()
     }
     
     private func PlaceView()
@@ -54,7 +66,7 @@ class ExampleChildViewController: UIViewController {
         case ViewPlacementEnum.top:
             self.view.center = pViewController!.view!.center
             self.view.center.y = selfHalfHeight + (pViewHeight * 0.1)
-           
+            
         case ViewPlacementEnum.center:
             self.view.center = pViewController!.view!.center
             
@@ -65,7 +77,7 @@ class ExampleChildViewController: UIViewController {
         case ViewPlacementEnum.custom:
             self.view.center = pViewController!.view!.center
             self.view.center.y = selfHalfHeight + (pViewHeight * customPlacement)
-        
+            
         default:
             self.view.center = pViewController!.view!.center
         }
@@ -75,6 +87,8 @@ class ExampleChildViewController: UIViewController {
     {
         self.pViewController?.view.addSubview(self.view)
         PlaceView()
+        
+        activityIndicator.startAnimating()
         
         /*
         dispatch_async(dispatch_get_main_queue(),
@@ -115,24 +129,23 @@ class ExampleChildViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
     */
-
 }

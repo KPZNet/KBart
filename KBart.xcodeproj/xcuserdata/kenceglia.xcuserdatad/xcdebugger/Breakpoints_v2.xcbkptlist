@@ -6,17 +6,89 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "KTViewController.swift"
-            timestampString = "448778777.884764"
+            filePath = "KBart/FirstViewController.swift"
+            timestampString = "448867965.555092"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
-            landmarkName = "CloseView()"
-            landmarkType = "5">
+            startingLineNumber = "14"
+            endingLineNumber = "14"
+            landmarkName = "FirstViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "KBart.FirstViewController.initalizeStatus.setter : Swift.Optional&lt;KBart.InitializingAppStatusView&gt;"
+                  moduleName = "KBart"
+                  urlString = "file:///Users/kenceglia/Desktop/KBart/KBart/FirstViewController.swift"
+                  timestampString = "448867965.910317"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "KBart.FirstViewController.initalizeStatus.materializeForSet : Swift.Optional&lt;KBart.InitializingAppStatusView&gt;"
+                  moduleName = "KBart"
+                  urlString = "file:///Users/kenceglia/Desktop/KBart/KBart/FirstViewController.swift"
+                  timestampString = "448867965.910738"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "KBart.FirstViewController.init (KBart.FirstViewController.Type)(nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;ObjectiveC.NSBundle&gt;) -&gt; KBart.FirstViewController"
+                  moduleName = "KBart"
+                  urlString = "file:///Users/kenceglia/Desktop/KBart/KBart/FirstViewController.swift"
+                  timestampString = "448867965.91106"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "52">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "KBart.FirstViewController.init (KBart.FirstViewController.Type)() -&gt; KBart.FirstViewController"
+                  moduleName = "KBart"
+                  urlString = "file:///Users/kenceglia/Desktop/KBart/KBart/FirstViewController.swift"
+                  timestampString = "448867965.911367"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "KBart.FirstViewController.init (KBart.FirstViewController.Type)(coder : ObjectiveC.NSCoder) -&gt; KBart.FirstViewController"
+                  moduleName = "KBart"
+                  urlString = "file:///Users/kenceglia/Desktop/KBart/KBart/FirstViewController.swift"
+                  timestampString = "448867965.91168"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "28">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

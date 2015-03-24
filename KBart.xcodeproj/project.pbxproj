@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		63D1CFE91ABA3B60007A7C4E /* stationCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D1CFE81ABA3B60007A7C4E /* stationCustomCell.swift */; };
+		71254FE31AC1097E00C82935 /* InitializingAppStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71254FE11AC1097E00C82935 /* InitializingAppStatusView.swift */; };
+		71254FE41AC1097E00C82935 /* InitializingAppStatusView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71254FE21AC1097E00C82935 /* InitializingAppStatusView.xib */; };
 		715F6EE01ABC9DCA0024F267 /* DestinationStationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715F6EDE1ABC9DCA0024F267 /* DestinationStationCell.swift */; };
 		715F6EE11ABC9DCA0024F267 /* DestinationStationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 715F6EDF1ABC9DCA0024F267 /* DestinationStationCell.xib */; };
 		716471141ABFD2E200EEB50A /* ExampleChildViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716471121ABFD2E200EEB50A /* ExampleChildViewController.swift */; };
@@ -38,6 +40,8 @@
 
 /* Begin PBXFileReference section */
 		63D1CFE81ABA3B60007A7C4E /* stationCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = stationCustomCell.swift; sourceTree = "<group>"; };
+		71254FE11AC1097E00C82935 /* InitializingAppStatusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitializingAppStatusView.swift; sourceTree = "<group>"; };
+		71254FE21AC1097E00C82935 /* InitializingAppStatusView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InitializingAppStatusView.xib; sourceTree = "<group>"; };
 		715F6EDE1ABC9DCA0024F267 /* DestinationStationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DestinationStationCell.swift; sourceTree = "<group>"; };
 		715F6EDF1ABC9DCA0024F267 /* DestinationStationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DestinationStationCell.xib; sourceTree = "<group>"; };
 		716471121ABFD2E200EEB50A /* ExampleChildViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleChildViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +85,8 @@
 		719288C51AB8FC7200AEE5E1 = {
 			isa = PBXGroup;
 			children = (
+				71254FE11AC1097E00C82935 /* InitializingAppStatusView.swift */,
+				71254FE21AC1097E00C82935 /* InitializingAppStatusView.xib */,
 				716471121ABFD2E200EEB50A /* ExampleChildViewController.swift */,
 				716471131ABFD2E200EEB50A /* ExampleChildViewController.xib */,
 				719288D01AB8FC7200AEE5E1 /* KBart */,
@@ -242,6 +248,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				71FD4A1F1ABA8B010009F4B7 /* CodeSnips in Resources */,
+				71254FE41AC1097E00C82935 /* InitializingAppStatusView.xib in Resources */,
 				719288DB1AB8FC7200AEE5E1 /* Main.storyboard in Resources */,
 				715F6EE11ABC9DCA0024F267 /* DestinationStationCell.xib in Resources */,
 				719288FC1AB91ECA00AEE5E1 /* BARTStations.xml in Resources */,
@@ -274,6 +281,7 @@
 				63D1CFE91ABA3B60007A7C4E /* stationCustomCell.swift in Sources */,
 				716471141ABFD2E200EEB50A /* ExampleChildViewController.swift in Sources */,
 				719288D61AB8FC7200AEE5E1 /* FirstViewController.swift in Sources */,
+				71254FE31AC1097E00C82935 /* InitializingAppStatusView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
