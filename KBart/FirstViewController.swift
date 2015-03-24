@@ -24,7 +24,7 @@ class FirstViewController: UIViewController
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        dispatch_async(Getbqueue_serial(),
+        dispatch_async(GetDataQueue_serial(),
             {
                 dispatch_async(dispatch_get_main_queue(),
                     { self.ShowStationStatus() } )
@@ -33,9 +33,6 @@ class FirstViewController: UIViewController
                     { self.DoneLoadingStations() } )
                 
         })
-        
-        
-        
     }
     
     func ShowStationStatus()
@@ -66,9 +63,12 @@ class FirstViewController: UIViewController
         /*
         loadingStationsMessenger.dismissViewControllerAnimated(true, completion: nil)
         */
-        initalizeStatus!.CloseView()
+        if let initStatus = initalizeStatus
+        {
+            initStatus.CloseView()
+            initalizeStatus = nil
+        }
         
-        initalizeStatus = nil
     }
     
     func CancelStationList()
@@ -81,13 +81,5 @@ class FirstViewController: UIViewController
     }
     
     
-    
-    @IBAction func checkStations(sender: AnyObject)
-    {
-        //        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-        //        let aVariable = appDelegate.stationList
-        //
-        //        var stat : Station = aVariable["K"]
-    }
 }
 

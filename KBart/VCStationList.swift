@@ -17,7 +17,7 @@ class VCStationList: UIViewController , UITableViewDelegate , UITableViewDataSou
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        dispatch_sync(Getbqueue_serial(),
+        dispatch_sync(GetDataQueue_serial(),
             {
                 self.stationList = GetAppDelegate().stationList
         })

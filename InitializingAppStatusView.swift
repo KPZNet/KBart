@@ -12,8 +12,6 @@ let XIB_NAME_InitializingAppStatusView:String = "InitializingAppStatusView"
 
 class InitializingAppStatusView: UIViewController {
     
-    
-    
     private var viewPlacement : ViewPlacementEnum = ViewPlacementEnum.top
     private var customPlacement : CGFloat = 0.0
     
@@ -26,7 +24,10 @@ class InitializingAppStatusView: UIViewController {
     
     @IBAction func OnCancel(sender: AnyObject)
     {
-        cancelCallback!()
+        if let cC = cancelCallback
+        {
+            cC()
+        }
     }
     
     

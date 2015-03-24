@@ -14,16 +14,16 @@ func GetAppDelegate() -> AppDelegate
     return appDelegate
 }
 
-func Getbqueue_serial() -> dispatch_queue_t
+func GetDataQueue_serial() -> dispatch_queue_t
 {
     let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-    return appDelegate.bqueue_serial
+    return appDelegate.dataQueue_serial
 }
 
-func Getbqueue_concur() -> dispatch_queue_t
+func GetDataQueue_concur() -> dispatch_queue_t
 {
     let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-    return appDelegate.bqueue_concur
+    return appDelegate.dataQueue_concur
 }
 
 
@@ -36,8 +36,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var stationList : StationList?
     
-    var bqueue_serial: dispatch_queue_t = dispatch_queue_create("bqueues", DISPATCH_QUEUE_SERIAL);
-    var bqueue_concur: dispatch_queue_t = dispatch_queue_create("bqueuec", DISPATCH_QUEUE_CONCURRENT);
+    var dataQueue_serial: dispatch_queue_t = dispatch_queue_create("bqueues", DISPATCH_QUEUE_SERIAL);
+    var dataQueue_concur: dispatch_queue_t = dispatch_queue_create("bqueuec", DISPATCH_QUEUE_CONCURRENT);
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
