@@ -54,14 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     {
         // Override point for customization after application launch.
         
-        dispatch_async(bqueue_serial,
-        {
-            self.stationList = GetBARTStationsFile()
-            
-            dispatch_get_main_queue()
-        })
-        
-        
+
         return true
     }
 

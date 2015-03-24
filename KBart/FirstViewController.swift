@@ -12,6 +12,7 @@ import UIKit
 class FirstViewController: UIViewController
 {
     var ktView:ExampleChildViewController?
+    var stationList : StationList?
     
     @IBAction func OnKTView(sender: AnyObject)
     {
@@ -28,10 +29,25 @@ class FirstViewController: UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+        ShowStationStatus()
+        dispatch_async(Getbqueue_serial(),
+            {
+                stationList = GetStationList()
+                dispatch_async(dispatch_get_main_queue(),
+                    { self.CloseStationStatus() } )
+                
+                        })
         
     }
 
+    func ShowStationStatus()
+    {
+        
+    }
+    func CloseStationStatus()
+    {
+        
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
