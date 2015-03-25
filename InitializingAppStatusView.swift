@@ -31,17 +31,12 @@ class InitializingAppStatusView: UIViewController {
     }
     
     
-    convenience init(forController _forController:UIViewController )
-    {
-        self.init(nibName : XIB_NAME_InitializingAppStatusView, bundle : nil)
-        self.pViewController = _forController
-    }
-    
-    convenience init(forController _forController:UIViewController, ViewPlacement _placement:ViewPlacementEnum, CustomPlacement _customPlacement:CGFloat = 0.0)
+    convenience init(forController _forController:UIViewController, CancelHandler _cancelHandler: () -> Void, ViewPlacement _placement:ViewPlacementEnum = .top, CustomPlacement _customPlacement:CGFloat = 0.0)
     {
         self.init(nibName : XIB_NAME_InitializingAppStatusView, bundle : nil)
         self.pViewController = _forController
         
+        cancelCallback = _cancelHandler
         Placement(Placement: _placement, CustomPlacement: _customPlacement)
     }
     

@@ -152,3 +152,46 @@ _popUpView.layer.backgroundColor = GE_COLOR_WHITE.CGColor;
 _popUpView.layer.borderColor = GE_COLOR_CHROME.CGColor;
 
 ----------------------------------
+
+
+
+/*
+1)
+var loadingStationsMessenger : UIAlertController = UIAlertController(title: "BART", message: "Initializing Stations", preferredStyle: UIAlertControllerStyle.Alert)
+2)
+/*
+loadingStationsMessenger.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { action in
+switch action.style{
+
+case .Cancel:
+self.CancelStationList()
+
+default:
+println("default")
+
+}
+}))
+self.presentViewController(loadingStationsMessenger, animated: true, completion: nil)
+
+
+3)
+/*
+loadingStationsMessenger.dismissViewControllerAnimated(true, completion: nil)
+*/
+
+
+
+
+
+*/
+
+
+
+
+
+*/
+
+
+
+
+

@@ -13,10 +13,6 @@ class FirstViewController: UIViewController
 {
     var initalizeStatus : InitializingAppStatusView?
     
-    /*
-    var loadingStationsMessenger : UIAlertController = UIAlertController(title: "BART", message: "Initializing Stations", preferredStyle: UIAlertControllerStyle.Alert)
-    */
-    
     var stationList : StationList?
     
     
@@ -37,32 +33,13 @@ class FirstViewController: UIViewController
     
     func ShowStationStatus()
     {
-        initalizeStatus  = InitializingAppStatusView(forController: self)
-        initalizeStatus!.SetCancelHandler(handler: CancelStationList )
+        initalizeStatus  = InitializingAppStatusView(forController: self, CancelHandler: CancelStationList)
         
         initalizeStatus!.ShowView()
-        
-        /*
-        loadingStationsMessenger.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { action in
-            switch action.style{
-           
-            case .Cancel:
-                self.CancelStationList()
-                
-            default:
-                println("default")
-                
-            }
-        }))
-        self.presentViewController(loadingStationsMessenger, animated: true, completion: nil)
-*/
     }
     
     func DoneLoadingStations()
     {
-        /*
-        loadingStationsMessenger.dismissViewControllerAnimated(true, completion: nil)
-        */
         if let initStatus = initalizeStatus
         {
             initStatus.CloseView()

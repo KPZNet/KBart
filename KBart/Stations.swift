@@ -19,6 +19,24 @@ func CallBARTAPI_Stations() -> NSData
     
     return dataVal
 }
+func CallBARTAPI_Stations_Asynch(handler: (StationList) -> Void)
+{
+    
+    let url:NSURL = NSURL(string:"http://api.bart.gov/api/stn.aspx?cmd=stns&key=\(BARTAPI_LIC_KEY)")!
+    let request:NSURLRequest = NSURLRequest(URL:url)
+    let queue:NSOperationQueue = NSOperationQueue()
+    let queuebert = dispatch_get_main_queue()
+    
+    NSURLConnection.sendAsynchronousRequest(request, queue: queue, completionHandler:
+        { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
+            
+            var errorData: NSError?
+            var doc = AEXMLDocument(xmlData: data, error: &errorData)!
+            var stationList : StationList = StationList()
+            Load_AEXML_into_BART_Stations(fromAEXMLDocument: doc, withStationList: stationList)
+            handler(stationList)
+    })
+}
 
 func Load_AEXML_into_BART_Stations(fromAEXMLDocument doc : AEXMLDocument, withStationList _stationList:StationList) -> StationList
 {
@@ -56,7 +74,6 @@ func Load_AEXML_into_BART_Stations(fromAEXMLDocument doc : AEXMLDocument, withSt
 }
 func GetBARTStationsLive() -> StationList
 {
-    sleep(10)
     var data = CallBARTAPI_Stations();
     var errorData: NSError?
     var doc = AEXMLDocument(xmlData: data, error: &errorData)!
@@ -64,7 +81,7 @@ func GetBARTStationsLive() -> StationList
     Load_AEXML_into_BART_Stations(fromAEXMLDocument: doc, withStationList: stationList)
     return stationList
 }
-func GetBARTStationsFile() -> StationList
+func ReadBARTStationsFromFile() -> StationList
 {
     let xmlPath = NSBundle.mainBundle().pathForResource("BARTStations", ofType: "xml")
     let data = NSData(contentsOfFile: xmlPath!)
@@ -75,24 +92,7 @@ func GetBARTStationsFile() -> StationList
     return stationList
 }
 
-func GetBARTStationsLiveAsynch(handler: (StationList) -> Void)
-{
-    
-    let url:NSURL = NSURL(string:"http://api.bart.gov/api/stn.aspx?cmd=stns&key=\(BARTAPI_LIC_KEY)")!
-    let request:NSURLRequest = NSURLRequest(URL:url)
-    let queue:NSOperationQueue = NSOperationQueue()
-    let queuebert = dispatch_get_main_queue()
-    
-    NSURLConnection.sendAsynchronousRequest(request, queue: queue, completionHandler:
-        { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
-            
-            var errorData: NSError?
-            var doc = AEXMLDocument(xmlData: data, error: &errorData)!
-            var stationList : StationList = StationList()
-            Load_AEXML_into_BART_Stations(fromAEXMLDocument: doc, withStationList: stationList)
-            handler(stationList)
-    })
-}
+
 
 
 func CallBARTAPI_ETD(forStation _forStation : String) -> NSData
@@ -170,23 +170,6 @@ func GetDestinationStations(forStation _forStation:String) -> DestinationStation
     return stationList
 }
 
-func GetDestinationStationsAsynch(forStation _forStation:String, handler: (DestinationStations) -> Void)
-{
-    
-    let url:NSURL = NSURL(string:"http://api.bart.gov/api/etd.aspx?cmd=etd&orig=\(_forStation)&key=\(BARTAPI_LIC_KEY)")!
-    let request:NSURLRequest = NSURLRequest(URL:url)
-    let queue:NSOperationQueue = NSOperationQueue()
-    
-    NSURLConnection.sendAsynchronousRequest(request, queue: queue, completionHandler:
-        { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
-            
-            var errorData: NSError?
-            var doc = AEXMLDocument(xmlData: data, error: &errorData)!
-            var stationList:DestinationStations = DestinationStations(forStation: _forStation)
-            Load_AEXML_into_DestinationStations(fromAEXMLDocument: doc, withDestinationStations: stationList)
-            handler(stationList)
-    })
-}
 
 
 class DepartingTrain
