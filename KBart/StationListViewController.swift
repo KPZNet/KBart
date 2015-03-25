@@ -8,9 +8,11 @@
 
 import UIKit
 
-class VCStationList: UIViewController , UITableViewDelegate , UITableViewDataSource{
+class StationListViewController: UIViewController , UITableViewDelegate , UITableViewDataSource{
 
     @IBOutlet weak var stationTable: UITableView!
+    @IBOutlet weak var detailedStationTable: UITableView!
+    
     var stationList : StationList!
     
     override func viewDidLoad() {
@@ -21,11 +23,19 @@ class VCStationList: UIViewController , UITableViewDelegate , UITableViewDataSou
             {
                 self.stationList = GetAppDelegate().stationList
         })
-
-
-
+        SetRoundedViewBox(forView: stationTable)
+        SetRoundedViewBox(forView: detailedStationTable)
     }
 
+    func SetRoundedViewBox(forView _forView:UIView)
+    {
+        _forView.layer.cornerRadius = 5.0
+        _forView.layer.masksToBounds = true
+        _forView.layer.borderWidth = 0.5
+        _forView.layer.borderColor = UIColor.blackColor().CGColor
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

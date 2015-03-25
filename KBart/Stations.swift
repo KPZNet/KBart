@@ -74,6 +74,7 @@ func Load_AEXML_into_BART_Stations(fromAEXMLDocument doc : AEXMLDocument, withSt
 }
 func GetBARTStationsLive() -> StationList
 {
+    sleep(5)
     var data = CallBARTAPI_Stations();
     var errorData: NSError?
     var doc = AEXMLDocument(xmlData: data, error: &errorData)!

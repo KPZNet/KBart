@@ -122,11 +122,19 @@ class InitializingAppStatusView: UIViewController {
         
     }
     
+    func SetRoundedViewBox(forView _forView:UIView)
+    {
+        _forView.layer.cornerRadius = 5.0
+        _forView.layer.masksToBounds = true
+        _forView.layer.borderWidth = 0.5
+        _forView.layer.borderColor = UIColor.blackColor().CGColor
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        SetRoundedViewBox(forView: self.view)
     }
     
     override func didReceiveMemoryWarning() {

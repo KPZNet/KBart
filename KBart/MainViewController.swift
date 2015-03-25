@@ -9,11 +9,11 @@
 import UIKit
 
 
-class FirstViewController: UIViewController
+class MainViewController: UIViewController
 {
     var initalizeStatus : InitializingAppStatusView?
     
-    var stationList : StationList?
+    var stationList : StationList!
     
     
     override func viewDidLoad() {
@@ -24,7 +24,8 @@ class FirstViewController: UIViewController
             {
                 dispatch_async(dispatch_get_main_queue(),
                     { self.ShowStationStatus() } )
-                self.stationList = GetBARTStationsLive()
+                self.stationList = ReadBARTStationsFromFile()
+                GetAppDelegate().SetStationList(forStationList: self.stationList)
                 dispatch_async(dispatch_get_main_queue(),
                     { self.DoneLoadingStations() } )
                 

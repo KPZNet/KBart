@@ -34,12 +34,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    var stationList : StationList?
+    var stationList : StationList!
     
     var dataQueue_serial: dispatch_queue_t = dispatch_queue_create("bqueues", DISPATCH_QUEUE_SERIAL);
     var dataQueue_concur: dispatch_queue_t = dispatch_queue_create("bqueuec", DISPATCH_QUEUE_CONCURRENT);
 
 
+    func SetStationList(forStationList _forStationList : StationList)
+    {
+        stationList = _forStationList
+    }
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
     {
         // Override point for customization after application launch.

@@ -145,11 +145,13 @@ self.ktView.view.transform = CGAffineTransformMakeScale(1, 1);
 
 ------------------------------------
 
-_popUpView.layer.cornerRadius = 5.0f;
-_popUpView.layer.masksToBounds = YES;
-_popUpView.layer.borderWidth = 0.5f;
-_popUpView.layer.backgroundColor = GE_COLOR_WHITE.CGColor;
-_popUpView.layer.borderColor = GE_COLOR_CHROME.CGColor;
+func SetRoundedViewBox(forView _forView:UIView)
+{
+_forView.layer.cornerRadius = 5.0
+_forView.layer.masksToBounds = true
+_forView.layer.borderWidth = 0.5
+_forView.layer.borderColor = UIColor.blackColor().CGColor
+}
 
 ----------------------------------
 
