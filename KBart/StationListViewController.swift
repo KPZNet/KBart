@@ -9,7 +9,7 @@
 import UIKit
 
 class StationListViewController: UIViewController , UITableViewDelegate , UITableViewDataSource{
-
+    
     @IBOutlet weak var stationTable: UITableView!
     @IBOutlet weak var detailedStationTable: UITableView!
     
@@ -26,7 +26,7 @@ class StationListViewController: UIViewController , UITableViewDelegate , UITabl
         SetRoundedViewBox(forView: stationTable)
         SetRoundedViewBox(forView: detailedStationTable)
     }
-
+    
     func SetRoundedViewBox(forView _forView:UIView)
     {
         _forView.layer.cornerRadius = 5.0
@@ -48,7 +48,13 @@ class StationListViewController: UIViewController , UITableViewDelegate , UITabl
     {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
-        return 1
+        var tableSections : Int = 0
+        if( tableView == stationTable)
+        {
+            tableSections = 1
+        }
+        
+        return tableSections
     }
     
     
@@ -56,17 +62,24 @@ class StationListViewController: UIViewController , UITableViewDelegate , UITabl
     {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return stationList!.NumberOfStations()
+        var tableRows : Int = 0
+        
+        if(tableView == stationTable)
+        {
+            tableRows = stationList!.NumberOfStations()
+        }
+        
+        return tableRows
     }
     
     
-
     
-//    func configureTableView()
-//    {
-//        stationTable.rowHeight = UITableViewAutomaticDimension
-//        stationTable.estimatedRowHeight = 160.0
-//    }
+    
+    //    func configureTableView()
+    //    {
+    //        stationTable.rowHeight = UITableViewAutomaticDimension
+    //        stationTable.estimatedRowHeight = 160.0
+    //    }
     
     func isLandscapeOrientation() -> Bool {
         return UIInterfaceOrientationIsLandscape(UIApplication.sharedApplication().statusBarOrientation)
@@ -74,19 +87,22 @@ class StationListViewController: UIViewController , UITableViewDelegate , UITabl
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
+        var cell:UITableViewCell!
         
-        var cellIdentifier:String = "stationCustomCell"
-        var cell:stationCustomCell? = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as? stationCustomCell
-
-        
-        // Configure the cell...
-        var stat = stationList![indexPath.row]
-        
-        cell?.stationName.text = stat.name
+        if(tableView == stationTable)
+        {
+            var cellIdentifier:String = "stationCustomCell"
+            var cell:stationCustomCell? = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as? stationCustomCell
+            
+            // Configure the cell...
+            var stat = stationList![indexPath.row]
+            
+            cell?.stationName.text = stat.name
+        }
         
         return cell!
     }
-
-
+    
+    
 }
 
