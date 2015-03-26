@@ -87,7 +87,7 @@ class StationListViewController: UIViewController , UITableViewDelegate , UITabl
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        var cell:UITableViewCell!
+        var returnCell:UITableViewCell!
         
         if(tableView == stationTable)
         {
@@ -98,9 +98,16 @@ class StationListViewController: UIViewController , UITableViewDelegate , UITabl
             var stat = stationList![indexPath.row]
             
             cell?.stationName.text = stat.name
+            
+            returnCell = cell
+        }
+        if(tableView == detailedStationTable)
+        {
+            
         }
         
-        return cell!
+        
+        return returnCell!
     }
     
     
