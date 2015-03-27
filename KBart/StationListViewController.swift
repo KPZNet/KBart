@@ -10,6 +10,8 @@ import UIKit
 
 class StationListViewController: UIViewController , UITableViewDelegate , UITableViewDataSource{
     
+    var selectedStationRow : Int = -1
+    
     @IBOutlet weak var stationTable: UITableView!
     @IBOutlet weak var detailedStationTable: UITableView!
     
@@ -73,6 +75,37 @@ class StationListViewController: UIViewController , UITableViewDelegate , UITabl
     }
     
     
+     //MARK: - Navigation
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath
+    {
+        selectedStationRow = indexPath.row
+        
+        return indexPath
+    }
+    
+    func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath
+    {
+        selectedStationRow = indexPath.row
+        
+        return indexPath
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    {
+        
+        
+        if (segue.identifier == "stationDetailSeque")
+        {
+            var svc = segue.destinationViewController as StationDetailViewController
+            
+            var selStation = stationList[selectedStationRow]
+            svc.selectedStation = selStation
+            
+        }
+        
+    }
+
     
     
     //    func configureTableView()
@@ -81,7 +114,8 @@ class StationListViewController: UIViewController , UITableViewDelegate , UITabl
     //        stationTable.estimatedRowHeight = 160.0
     //    }
     
-    func isLandscapeOrientation() -> Bool {
+    func isLandscapeOrientation() -> Bool
+    {
         return UIInterfaceOrientationIsLandscape(UIApplication.sharedApplication().statusBarOrientation)
     }
     

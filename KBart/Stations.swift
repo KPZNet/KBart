@@ -203,16 +203,17 @@ class DestinationStation
     var name:String
     var abbr:String
     
-    var trainArray : [DepartingTrain]
+    var trainArray : [DepartingTrain] = [DepartingTrain]()
     
     init()
     {
         name = "name"
         abbr = "abbr"
-        
-        self.trainArray = [DepartingTrain]()
     }
-    
+    func NumberOfTrains() -> Int
+    {
+        return trainArray.count
+    }
     subscript(key: Int) -> DepartingTrain
         {
             var Stat : DepartingTrain = trainArray[key]
@@ -226,6 +227,10 @@ class DestinationStations
     var stationArray : [DestinationStation] = [DestinationStation]()
     var stationAbbr:String = ""
     
+    func NumberOfStations() -> Int
+    {
+        return stations.count
+    }
     
     init(forStation _forStationAbbrev:String)
     {
