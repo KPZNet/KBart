@@ -161,15 +161,17 @@ func Load_AEXML_into_DestinationStations(fromAEXMLDocument doc : AEXMLDocument, 
     return _destinationStations
 }
 
-func GetDestinationStations(forStation _forStation:String) -> DestinationStations
+func GetDestinationStations(forStationAbbr _forStationAbbr:String) -> DestinationStations
 {
-    var data = CallBARTAPI_ETD(forStation:_forStation);
+    var data = CallBARTAPI_ETD(forStation:_forStationAbbr);
     var errorData: NSError?
     var doc = AEXMLDocument(xmlData: data, error: &errorData)!
-    var stationList:DestinationStations = DestinationStations(forStation:_forStation)
+    var stationList:DestinationStations = DestinationStations(forStation:_forStationAbbr)
     Load_AEXML_into_DestinationStations(fromAEXMLDocument: doc, withDestinationStations: stationList)
     return stationList
 }
+
+
 
 
 

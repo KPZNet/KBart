@@ -26,6 +26,10 @@ func GetDataQueue_concur() -> dispatch_queue_t
     return appDelegate.dataQueue_concur
 }
 
+func GetStationList()->StationList{
+    return GetAppDelegate().stationList
+}
+
 
 
 

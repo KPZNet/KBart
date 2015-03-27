@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6399EDDC1AC4CF6A00085061 /* StationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6399EDDA1AC4CF6A00085061 /* StationDetailsViewController.swift */; };
+		6399EDDD1AC4CF6A00085061 /* StationDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6399EDDB1AC4CF6A00085061 /* StationDetailsViewController.xib */; };
 		63D1CFE91ABA3B60007A7C4E /* stationCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D1CFE81ABA3B60007A7C4E /* stationCustomCell.swift */; };
 		71254FE31AC1097E00C82935 /* InitializingAppStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71254FE11AC1097E00C82935 /* InitializingAppStatusView.swift */; };
 		71254FE41AC1097E00C82935 /* InitializingAppStatusView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71254FE21AC1097E00C82935 /* InitializingAppStatusView.xib */; };
@@ -39,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6399EDDA1AC4CF6A00085061 /* StationDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StationDetailsViewController.swift; path = ../StationDetailsViewController.swift; sourceTree = "<group>"; };
+		6399EDDB1AC4CF6A00085061 /* StationDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StationDetailsViewController.xib; path = ../StationDetailsViewController.xib; sourceTree = "<group>"; };
 		63D1CFE81ABA3B60007A7C4E /* stationCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = stationCustomCell.swift; sourceTree = "<group>"; };
 		71254FE11AC1097E00C82935 /* InitializingAppStatusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitializingAppStatusView.swift; sourceTree = "<group>"; };
 		71254FE21AC1097E00C82935 /* InitializingAppStatusView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InitializingAppStatusView.xib; sourceTree = "<group>"; };
@@ -118,6 +122,8 @@
 				719288F51AB8FCDA00AEE5E1 /* Stations.swift */,
 				63D1CFE81ABA3B60007A7C4E /* stationCustomCell.swift */,
 				71FD4A1C1ABA8A800009F4B7 /* ProjectConstants.swift */,
+				6399EDDB1AC4CF6A00085061 /* StationDetailsViewController.xib */,
+				6399EDDA1AC4CF6A00085061 /* StationDetailsViewController.swift */,
 				715F6EDE1ABC9DCA0024F267 /* DestinationStationCell.swift */,
 				715F6EDF1ABC9DCA0024F267 /* DestinationStationCell.xib */,
 			);
@@ -262,6 +268,7 @@
 				719288FC1AB91ECA00AEE5E1 /* BARTStations.xml in Resources */,
 				719288E01AB8FC7200AEE5E1 /* LaunchScreen.xib in Resources */,
 				716471151ABFD2E200EEB50A /* ExampleChildViewController.xib in Resources */,
+				6399EDDD1AC4CF6A00085061 /* StationDetailsViewController.xib in Resources */,
 				719288DD1AB8FC7200AEE5E1 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -284,6 +291,7 @@
 				719288D81AB8FC7200AEE5E1 /* StationListViewController.swift in Sources */,
 				719288D41AB8FC7200AEE5E1 /* AppDelegate.swift in Sources */,
 				715F6EE01ABC9DCA0024F267 /* DestinationStationCell.swift in Sources */,
+				6399EDDC1AC4CF6A00085061 /* StationDetailsViewController.swift in Sources */,
 				719288F61AB8FCDA00AEE5E1 /* Stations.swift in Sources */,
 				71FD4A1D1ABA8A800009F4B7 /* ProjectConstants.swift in Sources */,
 				63D1CFE91ABA3B60007A7C4E /* stationCustomCell.swift in Sources */,
