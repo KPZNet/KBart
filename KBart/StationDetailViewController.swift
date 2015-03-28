@@ -96,7 +96,8 @@ class StationDetailViewController: UIViewController , UITableViewDelegate , UITa
         // Configure the cell...
         var stat = destinationStations[indexPath.row]
         
-        cell?.stationName.text = stat.name
+        cell?.SetStation(forStation: stat)
+        
         
         returnCell = cell
         

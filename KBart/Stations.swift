@@ -214,10 +214,15 @@ class DestinationStation
     {
         return trainArray.count
     }
-    subscript(key: Int) -> DepartingTrain
+    subscript(key: Int) -> DepartingTrain?
         {
-            var Stat : DepartingTrain = trainArray[key]
-            return Stat
+            var returnStat : DepartingTrain?
+            
+            if( key <= (NumberOfTrains()-1) )
+            {
+                returnStat = trainArray[key]
+            }
+            return returnStat
     }
 }
 

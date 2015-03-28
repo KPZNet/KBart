@@ -15,7 +15,28 @@ class DestinationStationCell: UITableViewCell {
     @IBOutlet weak var train2Label: UILabel!
     @IBOutlet weak var train3Label: UILabel!
     
+    var station : DestinationStation?
     
+    func SetStation(forStation _forStation : DestinationStation)
+    {
+        station = _forStation
+        stationName.text = station?.name
+        UpdateTrain(forLabel: train1Label, forTrain: station![0])
+        UpdateTrain(forLabel: train2Label, forTrain: station![1])
+        UpdateTrain(forLabel: train3Label, forTrain: station![2])
+    }
+    func UpdateTrain(forLabel _forLabel:UILabel, forTrain _forTrain :DepartingTrain?)
+    {
+        if let dTrain = _forTrain
+        {
+            _forLabel.text = dTrain.minutes
+        }
+        else
+        {
+            _forLabel.text = "NT"
+        }
+        
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
