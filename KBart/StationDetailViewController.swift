@@ -11,25 +11,55 @@ import UIKit
 class StationDetailViewController: UIViewController , UITableViewDelegate , UITableViewDataSource {
     
     @IBOutlet weak var departureStationsTable: UITableView!
-    var destinationStations : DestinationStations!
+    var destinationStations : DestinationStations?
     var selectedStation : Station!
+    var updateTimer  = NSTimer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        //self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-        
-        destinationStations = GetDestinationStations(forStationAbbr : selectedStation.abbr)
     }
     
+    override func viewWillDisappear(_animated: Bool)
+    {
+        updateTimer.invalidate()
+    }
+    override func viewWillAppear(animated: Bool)
+    {
+        updateTimer.invalidate()
+        
+        updateTimer = NSTimer.scheduledTimerWithTimeInterval(30.0,
+            target: self,
+            selector: Selector("FireGetDepartureStations"),
+            userInfo: nil,
+            repeats: true)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    
+    func UpdateDestinationStations(forStations _forStations : DestinationStations)
+    {
+        self.destinationStations = _forStations
+        departureStationsTable.reloadData()
+    }
+    func FireGetDepartureStations()
+    {
+        
+        dispatch_async(GetDataQueue_serial(),
+            {
+                var destStations : DestinationStations = GetDestinationStations(forStationAbbr :self.selectedStation.abbr)
+                
+                dispatch_async(dispatch_get_main_queue(),
+                    { self.UpdateDestinationStations(forStations: destStations) } )
+                
+        })
+        
+    }
     
     /*
     // MARK: - Navigation
@@ -49,7 +79,7 @@ class StationDetailViewController: UIViewController , UITableViewDelegate , UITa
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
         var tableSections : Int = 0
-        if( tableView == departureStationsTable)
+        if let dStations = destinationStations
         {
             tableSections = 1
         }
@@ -64,9 +94,9 @@ class StationDetailViewController: UIViewController , UITableViewDelegate , UITa
         // Return the number of rows in the section.
         var tableRows : Int = 0
         
-        if( tableView == departureStationsTable)
+        if let dStations = destinationStations
         {
-            tableRows = destinationStations.NumberOfStations()
+            tableRows = dStations.NumberOfStations()
         }
         
         return tableRows
@@ -94,10 +124,11 @@ class StationDetailViewController: UIViewController , UITableViewDelegate , UITa
         var cell:DestinationStationCell? = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as? DestinationStationCell
         
         // Configure the cell...
-        var stat = destinationStations[indexPath.row]
-        
-        cell?.SetStation(forStation: stat)
-        
+        if let dStations = destinationStations
+        {
+            var stat = dStations[indexPath.row]
+            cell?.SetStation(forStation: stat)
+        }
         
         returnCell = cell
         
