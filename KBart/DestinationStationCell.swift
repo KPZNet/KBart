@@ -11,7 +11,7 @@ import UIKit
 class DestinationStationCell: UITableViewCell {
 
     @IBOutlet weak var stationName: UILabel!
-    @IBOutlet weak var train1Label: UITextField!
+    @IBOutlet weak var train1Label: UILabel!
     @IBOutlet weak var train2Label: UILabel!
     @IBOutlet weak var train3Label: UILabel!
     

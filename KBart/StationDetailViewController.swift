@@ -89,22 +89,16 @@ class StationDetailViewController: UIViewController , UITableViewDelegate , UITa
     {
         var returnCell:UITableViewCell!
         
+        
         var cellIdentifier:String = "DestinationStationCell"
         var cell:DestinationStationCell? = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as? DestinationStationCell
-        if (cell == nil)
-        {
-            var nib:Array = NSBundle.mainBundle().loadNibNamed("DestinationStationCell", owner: self, options: nil)
-            cell = nib[0] as? DestinationStationCell
-        }
         
         // Configure the cell...
         var stat = destinationStations[indexPath.row]
         
         cell?.stationName.text = stat.name
         
-        
         returnCell = cell
-        
         
         return returnCell!
     }

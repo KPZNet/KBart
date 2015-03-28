@@ -13,7 +13,6 @@ class StationListViewController: UIViewController , UITableViewDelegate , UITabl
     var selectedStationRow : Int = -1
     
     @IBOutlet weak var stationTable: UITableView!
-    @IBOutlet weak var detailedStationTable: UITableView!
     
     var stationList : StationList!
     
@@ -26,7 +25,6 @@ class StationListViewController: UIViewController , UITableViewDelegate , UITabl
                 self.stationList = GetAppDelegate().stationList
         })
         SetRoundedViewBox(forView: stationTable)
-        SetRoundedViewBox(forView: detailedStationTable)
     }
     
     func SetRoundedViewBox(forView _forView:UIView)
@@ -134,10 +132,6 @@ class StationListViewController: UIViewController , UITableViewDelegate , UITabl
             cell?.stationName.text = stat.name
             
             returnCell = cell
-        }
-        if(tableView == detailedStationTable)
-        {
-            
         }
         
         
