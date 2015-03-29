@@ -11,7 +11,6 @@ import UIKit
 class RouteSelectionViewController: UIViewController, UITableViewDelegate , UITableViewDataSource
 {
 
-
     var selectedStationRow : Int = -1
     
     @IBOutlet weak var stationFromTable: UITableView!
@@ -19,16 +18,18 @@ class RouteSelectionViewController: UIViewController, UITableViewDelegate , UITa
     
     var stationList : StationList!
     
-    var fromStation : Station
-    var toStation : Station
+    var fromStation : Station?
+    var toStation : Station?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        //self.stationList = GetAppDelegate().stationList
-    
+        self.stationList = GetAppDelegate().stationList
+        
+        SetRoundedViewBox(forView: stationFromTable)
+        SetRoundedViewBox(forView: stationToTable)
     }
     
     func SetRoundedViewBox(forView _forView:UIView)
@@ -110,37 +111,20 @@ class RouteSelectionViewController: UIViewController, UITableViewDelegate , UITa
     
     
     
-    //    func configureTableView()
-    //    {
-    //        stationTable.rowHeight = UITableViewAutomaticDimension
-    //        stationTable.estimatedRowHeight = 160.0
-    //    }
-    
-    func isLandscapeOrientation() -> Bool
-    {
-        return UIInterfaceOrientationIsLandscape(UIApplication.sharedApplication().statusBarOrientation)
-    }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        var returnCell:UITableViewCell!
-        
+    let cell = tableView.dequeueReusableCellWithIdentifier("RouteStationCell", forIndexPath: indexPath) as UITableViewCell
+    
+    // Configure the cell...
         if let statList = stationList
         {
-            var cellIdentifier:String = "stationCustomCell"
-            var cell:stationCustomCell? = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as? stationCustomCell
-            
-            // Configure the cell...
-            var stat = statList[indexPath.row]
-            
-            cell?.stationName.text = stat.name
-            
-            returnCell = cell
+             var stat = stationList[indexPath.row]
+            cell.textLabel?.text = stat.name
         }
-        
-        
-        return returnCell!
+    return cell
     }
+    
     
 
 }

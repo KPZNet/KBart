@@ -43,11 +43,16 @@ class DestinationStationCell: UITableViewCell {
     {
         if let dTrain = _forTrain
         {
-            _forLabel.text = dTrain.minutes
+            var mins : String = dTrain.minutes
+            if(mins.isEqual("Leaving"))
+            {
+                mins = "Now"
+            }
+            _forLabel.text = mins
         }
         else
         {
-            _forLabel.text = "NT"
+            _forLabel.text = ""
         }
         
     }
