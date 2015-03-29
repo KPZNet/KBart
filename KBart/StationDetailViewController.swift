@@ -26,11 +26,12 @@ class StationDetailViewController: UIViewController , UITableViewDelegate , UITa
     override func viewWillDisappear(_animated: Bool)
     {
         updateTimer.invalidate()
+        
     }
     override func viewWillAppear(animated: Bool)
     {
         updateTimer.invalidate()
-        
+        FireGetDepartureStations()
         updateTimer = NSTimer.scheduledTimerWithTimeInterval(30.0,
             target: self,
             selector: Selector("FireGetDepartureStations"),

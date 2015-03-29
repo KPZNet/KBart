@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="13F1066" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--First-->
@@ -106,37 +107,63 @@
                                 <rect key="frame" x="16" y="81" width="568" height="437"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="DestinationStationCell" id="409-36-J0O" customClass="DestinationStationCell" customModule="KBart" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DestinationStationCell" id="409-36-J0O" customClass="DestinationStationCell" customModule="KBart" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="568" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="409-36-J0O" id="t7u-4p-ZSd">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WjQ-H9-Gd9" userLabel="StationName">
-                                                    <rect key="frame" x="8" y="9" width="270" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V9n-Wp-cp1" userLabel="train2">
-                                                    <rect key="frame" x="8" y="23" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tY8-rJ-GWx" userLabel="train3">
-                                                    <rect key="frame" x="258" y="23" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Beb-a9-URN" userLabel="train1">
-                                                    <rect key="frame" x="258" y="0.0" width="68" height="32"/>
+                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sD2-uY-Rx6" userLabel="TrainTimesView">
+                                                    <rect key="frame" x="322" y="3" width="68" height="39"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Beb-a9-URN" userLabel="train1">
+                                                            <rect key="frame" x="3" y="4" width="32" height="32"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V9n-Wp-cp1" userLabel="train2">
+                                                            <rect key="frame" x="38" y="4" width="25" height="15"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tY8-rJ-GWx" userLabel="train3">
+                                                            <rect key="frame" x="38" y="21" width="25" height="15"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstItem="V9n-Wp-cp1" firstAttribute="top" secondItem="Beb-a9-URN" secondAttribute="top" id="3Jp-C6-wfr"/>
+                                                        <constraint firstItem="V9n-Wp-cp1" firstAttribute="trailing" secondItem="sD2-uY-Rx6" secondAttribute="trailing" id="GIv-qm-9sk"/>
+                                                        <constraint firstItem="tY8-rJ-GWx" firstAttribute="trailing" secondItem="sD2-uY-Rx6" secondAttribute="trailing" id="Igq-hB-2Yt"/>
+                                                        <constraint firstItem="Beb-a9-URN" firstAttribute="height" secondItem="sD2-uY-Rx6" secondAttribute="height" id="KIb-pC-AS9"/>
+                                                        <constraint firstItem="tY8-rJ-GWx" firstAttribute="leading" secondItem="Beb-a9-URN" secondAttribute="trailing" id="OH6-CH-9eu"/>
+                                                        <constraint firstItem="tY8-rJ-GWx" firstAttribute="height" secondItem="Beb-a9-URN" secondAttribute="height" multiplier="0.5" id="a4g-Q1-187"/>
+                                                        <constraint firstItem="Beb-a9-URN" firstAttribute="centerY" secondItem="sD2-uY-Rx6" secondAttribute="centerY" id="ia8-NZ-Zg8"/>
+                                                        <constraint firstItem="V9n-Wp-cp1" firstAttribute="height" secondItem="Beb-a9-URN" secondAttribute="height" multiplier="0.5" id="k48-ie-cN7"/>
+                                                        <constraint firstItem="tY8-rJ-GWx" firstAttribute="bottom" secondItem="Beb-a9-URN" secondAttribute="bottom" id="r87-X6-oI9"/>
+                                                        <constraint firstItem="Beb-a9-URN" firstAttribute="leading" secondItem="sD2-uY-Rx6" secondAttribute="leading" id="tI6-N7-PxT"/>
+                                                        <constraint firstItem="V9n-Wp-cp1" firstAttribute="leading" secondItem="Beb-a9-URN" secondAttribute="trailing" id="wOA-l3-v0v"/>
+                                                        <constraint firstItem="Beb-a9-URN" firstAttribute="width" secondItem="sD2-uY-Rx6" secondAttribute="width" multiplier="0.65" id="woU-yX-2J4"/>
+                                                        <constraint firstAttribute="width" constant="68" id="xvc-BA-abq"/>
+                                                    </constraints>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WjQ-H9-Gd9" userLabel="StationName">
+                                                    <rect key="frame" x="8" y="12" width="270" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="centerY" secondItem="WjQ-H9-Gd9" secondAttribute="centerY" constant="2" id="1Dy-90-l5L"/>
+                                                <constraint firstAttribute="centerY" secondItem="sD2-uY-Rx6" secondAttribute="centerY" constant="-1" id="8ux-v5-Ifv"/>
+                                                <constraint firstItem="sD2-uY-Rx6" firstAttribute="trailing" secondItem="t7u-4p-ZSd" secondAttribute="trailingMargin" id="vUC-XW-UKV"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="stationName" destination="WjQ-H9-Gd9" id="Osh-cL-0ms"/>
@@ -168,7 +195,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6um-8t-Yue" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2302" y="393"/>
+            <point key="canvasLocation" x="2302" y="386"/>
         </scene>
         <!--Destination Station Stuff-->
         <scene sceneID="V6B-6d-KhC">
