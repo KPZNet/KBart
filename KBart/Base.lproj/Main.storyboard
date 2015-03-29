@@ -200,7 +200,7 @@
         <!--Destination Station Stuff-->
         <scene sceneID="V6B-6d-KhC">
             <objects>
-                <viewController title="Destination Station Stuff" id="VnN-fn-mRe" sceneMemberID="viewController">
+                <viewController title="Destination Station Stuff" id="VnN-fn-mRe" customClass="RouteSelectionViewController" customModule="KBart" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1zc-D6-xt0"/>
                         <viewControllerLayoutGuide type="bottom" id="Mqd-Pj-4Ew"/>
@@ -209,18 +209,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="ff" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rO7-kO-bfT">
-                                <rect key="frame" x="16" y="127" width="97" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="rPo-lj-rB9">
+                                <rect key="frame" x="16" y="72" width="284" height="189"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="UfS-ey-qch">
+                                <rect key="frame" x="308" y="72" width="286" height="189"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="stationFromTable" destination="rPo-lj-rB9" id="HhB-fP-fKq"/>
+                        <outlet property="stationToTable" destination="UfS-ey-qch" id="l6L-x1-gKQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mcy-cR-UUs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2302" y="1200"/>
+            <point key="canvasLocation" x="1943" y="1309"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -266,6 +273,6 @@
         <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="khp-16-wBu"/>
+        <segue reference="blJ-6g-fFi"/>
     </inferredMetricsTieBreakers>
 </document>
