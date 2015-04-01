@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		63B045581ACC5D3D00DC05A1 /* DepartureStationsViewControlE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B045571ACC5D3D00DC05A1 /* DepartureStationsViewControlE.swift */; };
 		63CCF8CD1AC787C500B15342 /* RouteSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CCF8CC1AC787C500B15342 /* RouteSelectionViewController.swift */; };
 		63D1CFE91ABA3B60007A7C4E /* stationCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D1CFE81ABA3B60007A7C4E /* stationCustomCell.swift */; };
 		71254FE31AC1097E00C82935 /* InitializingAppStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71254FE11AC1097E00C82935 /* InitializingAppStatusView.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		63B045571ACC5D3D00DC05A1 /* DepartureStationsViewControlE.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DepartureStationsViewControlE.swift; path = KBart/DepartureStationsViewControlE.swift; sourceTree = "<group>"; };
 		63CCF8CC1AC787C500B15342 /* RouteSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteSelectionViewController.swift; sourceTree = "<group>"; };
 		63D1CFE81ABA3B60007A7C4E /* stationCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = stationCustomCell.swift; sourceTree = "<group>"; };
 		71254FE11AC1097E00C82935 /* InitializingAppStatusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitializingAppStatusView.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 		719288C51AB8FC7200AEE5E1 = {
 			isa = PBXGroup;
 			children = (
+				63B045571ACC5D3D00DC05A1 /* DepartureStationsViewControlE.swift */,
 				715284C21AC7AD9500F1F247 /* TableViewController.swift */,
 				71C5E6491AC30B1700A5A597 /* Examples and Snips */,
 				71254FE11AC1097E00C82935 /* InitializingAppStatusView.swift */,
@@ -287,6 +290,7 @@
 			files = (
 				719288F91AB91E3F00AEE5E1 /* AEXML.swift in Sources */,
 				71B1CFB11AC5043400F40EEE /* StationListViewController.swift in Sources */,
+				63B045581ACC5D3D00DC05A1 /* DepartureStationsViewControlE.swift in Sources */,
 				715284C31AC7AD9500F1F247 /* TableViewController.swift in Sources */,
 				719288D41AB8FC7200AEE5E1 /* AppDelegate.swift in Sources */,
 				715F6EE01ABC9DCA0024F267 /* DestinationStationCell.swift in Sources */,

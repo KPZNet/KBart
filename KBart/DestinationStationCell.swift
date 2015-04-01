@@ -44,9 +44,11 @@ class DestinationStationCell: UITableViewCell {
         if let dTrain = _forTrain
         {
             var mins : String = dTrain.minutes
+            _forLabel.layer.backgroundColor = UIColor.clearColor().CGColor
             if(mins.isEqual("Leaving"))
             {
                 mins = "Now"
+                _forLabel.layer.backgroundColor = UIColor.greenColor().CGColor
             }
             _forLabel.text = mins
         }
