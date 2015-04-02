@@ -98,7 +98,7 @@ class StationListViewController: UIViewController , UITableViewDelegate , UITabl
             var svc = segue.destinationViewController as StationDetailViewController
             
             var selStation = stationList[selectedStationRow]
-            svc.selectedStation = selStation
+            svc.selectedStationAbbr = selStation.abbr
             
         }
         

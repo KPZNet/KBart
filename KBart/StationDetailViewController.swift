@@ -12,7 +12,8 @@ class StationDetailViewController: UIViewController , UITableViewDelegate , UITa
     
     @IBOutlet weak var departureStationsTable: UITableView!
     var destinationStations : DestinationStations?
-    var selectedStation : Station!
+    //var selectedStation : Station!
+    var selectedStationAbbr : String = "RICH"
     var updateTimer  = NSTimer()
     
     override func viewDidLoad() {
@@ -53,7 +54,7 @@ class StationDetailViewController: UIViewController , UITableViewDelegate , UITa
         
         dispatch_async(GetDataQueue_serial(),
             {
-                var destStations : DestinationStations = GetDestinationStations(forStationAbbr :self.selectedStation.abbr)
+                var destStations : DestinationStations = GetDestinationStations(forStationAbbr :self.selectedStationAbbr)
                 
                 dispatch_async(dispatch_get_main_queue(),
                     { self.UpdateDestinationStations(forStations: destStations) } )
