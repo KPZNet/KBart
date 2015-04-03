@@ -24,7 +24,7 @@ class StationListViewController: UIViewController , UITableViewDelegate , UITabl
             {
                 self.stationList = GetAppDelegate().stationList
         })
-        SetRoundedViewBox(forView: stationTable)
+        //SetRoundedViewBox(forView: stationTable)
     }
     
     func SetRoundedViewBox(forView _forView:UIView)
@@ -106,17 +106,15 @@ class StationListViewController: UIViewController , UITableViewDelegate , UITabl
 
     
     
-    //    func configureTableView()
-    //    {
-    //        stationTable.rowHeight = UITableViewAutomaticDimension
-    //        stationTable.estimatedRowHeight = 160.0
-    //    }
+//        func configureTableView()
+//        {
+//            stationTable.rowHeight = UITableViewAutomaticDimension
+//            stationTable.estimatedRowHeight = 44
+//        }
     
-    func isLandscapeOrientation() -> Bool
-    {
-        return UIInterfaceOrientationIsLandscape(UIApplication.sharedApplication().statusBarOrientation)
-    }
+
     
+    /*
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         var returnCell:UITableViewCell!
@@ -137,6 +135,19 @@ class StationListViewController: UIViewController , UITableViewDelegate , UITabl
         
         return returnCell!
     }
+*/
+    
+    
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCellWithIdentifier("stationCustomCell", forIndexPath: indexPath) as UITableViewCell
+    
+    // Configure the cell...
+    cell.textLabel?.text = "asdfad"
+        
+    return cell
+    }
+    
     
     
 }
