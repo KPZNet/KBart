@@ -104,25 +104,15 @@ class StationListViewController: UIViewController , UITableViewDelegate , UITabl
         
     }
 
-    
-    
-//        func configureTableView()
-//        {
-//            stationTable.rowHeight = UITableViewAutomaticDimension
-//            stationTable.estimatedRowHeight = 44
-//        }
-    
 
-    
-    /*
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         var returnCell:UITableViewCell!
         
         if(tableView == stationTable)
         {
-            var cellIdentifier:String = "stationCustomCell"
-            var cell:stationCustomCell? = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as? stationCustomCell
+            var cellIdentifier:String = "StationListCell"
+            var cell:StationListCell? = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as? StationListCell
             
             // Configure the cell...
             var stat = stationList![indexPath.row]
@@ -135,20 +125,8 @@ class StationListViewController: UIViewController , UITableViewDelegate , UITabl
         
         return returnCell!
     }
-*/
+
     
-    
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("stationCustomCell", forIndexPath: indexPath) as UITableViewCell
-    
-    // Configure the cell...
-    cell.textLabel?.text = "asdfad"
-        
-    return cell
-    }
-    
-    
-    
+
 }
 

@@ -1,5 +1,5 @@
 //
-//  stationCustomCell.swift
+//  StationListCell.swift
 //  KBart
 //
 //  Created by Kenneth Ceglia on 3/18/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class stationCustomCell: UITableViewCell {
+class StationListCell: UITableViewCell {
 
     @IBOutlet weak var stationName: UILabel!
     

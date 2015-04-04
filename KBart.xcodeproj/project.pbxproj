@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		633B59A11ACE124B00E73AF8 /* TBTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633B59A01ACE124B00E73AF8 /* TBTableViewController.swift */; };
 		63CCF8CD1AC787C500B15342 /* RouteSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CCF8CC1AC787C500B15342 /* RouteSelectionViewController.swift */; };
-		63D1CFE91ABA3B60007A7C4E /* stationCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D1CFE81ABA3B60007A7C4E /* stationCustomCell.swift */; };
+		63D1CFE91ABA3B60007A7C4E /* StationListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D1CFE81ABA3B60007A7C4E /* StationListCell.swift */; };
 		71254FE31AC1097E00C82935 /* InitializingAppStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71254FE11AC1097E00C82935 /* InitializingAppStatusView.swift */; };
 		71254FE41AC1097E00C82935 /* InitializingAppStatusView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71254FE21AC1097E00C82935 /* InitializingAppStatusView.xib */; };
 		715284C31AC7AD9500F1F247 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715284C21AC7AD9500F1F247 /* TableViewController.swift */; };
@@ -44,7 +44,7 @@
 /* Begin PBXFileReference section */
 		633B59A01ACE124B00E73AF8 /* TBTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TBTableViewController.swift; path = KBart/TBTableViewController.swift; sourceTree = "<group>"; };
 		63CCF8CC1AC787C500B15342 /* RouteSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteSelectionViewController.swift; sourceTree = "<group>"; };
-		63D1CFE81ABA3B60007A7C4E /* stationCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = stationCustomCell.swift; sourceTree = "<group>"; };
+		63D1CFE81ABA3B60007A7C4E /* StationListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationListCell.swift; sourceTree = "<group>"; };
 		71254FE11AC1097E00C82935 /* InitializingAppStatusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitializingAppStatusView.swift; sourceTree = "<group>"; };
 		71254FE21AC1097E00C82935 /* InitializingAppStatusView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InitializingAppStatusView.xib; sourceTree = "<group>"; };
 		715284C21AC7AD9500F1F247 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
@@ -122,7 +122,7 @@
 				719288DE1AB8FC7200AEE5E1 /* LaunchScreen.xib */,
 				719288D11AB8FC7200AEE5E1 /* Supporting Files */,
 				719288F51AB8FCDA00AEE5E1 /* Stations.swift */,
-				63D1CFE81ABA3B60007A7C4E /* stationCustomCell.swift */,
+				63D1CFE81ABA3B60007A7C4E /* StationListCell.swift */,
 				715F6EDE1ABC9DCA0024F267 /* DestinationStationCell.swift */,
 				71FD4A1C1ABA8A800009F4B7 /* ProjectConstants.swift */,
 				719288D51AB8FC7200AEE5E1 /* MainViewController.swift */,
@@ -296,7 +296,7 @@
 				719288F61AB8FCDA00AEE5E1 /* Stations.swift in Sources */,
 				71B1CFB31AC5049800F40EEE /* StationDetailViewController.swift in Sources */,
 				71FD4A1D1ABA8A800009F4B7 /* ProjectConstants.swift in Sources */,
-				63D1CFE91ABA3B60007A7C4E /* stationCustomCell.swift in Sources */,
+				63D1CFE91ABA3B60007A7C4E /* StationListCell.swift in Sources */,
 				716471141ABFD2E200EEB50A /* ExampleChildViewController.swift in Sources */,
 				63CCF8CD1AC787C500B15342 /* RouteSelectionViewController.swift in Sources */,
 				633B59A11ACE124B00E73AF8 /* TBTableViewController.swift in Sources */,
