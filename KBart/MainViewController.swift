@@ -15,10 +15,25 @@ class MainViewController: UIViewController
     
     var stationList : StationList!
     
+    @IBOutlet weak var etaButton: UIButton!
+    @IBOutlet weak var routeButton: UIButton!
+    @IBOutlet weak var configureButton: UIButton!
+    @IBOutlet weak var alertsButton: UIButton!
+    
+    @IBOutlet weak var quickViewStationETA: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+    
+        SetRoundedButton(forButton: etaButton)
+        SetRoundedButton(forButton: routeButton)
+        SetRoundedButton(forButton: alertsButton)
+        SetRoundedButton(forButton: configureButton)
+        
+        SetRoundedViewBox(forView: quickViewStationETA)
+        
         
         dispatch_async(GetDataQueue_serial(),
             {
