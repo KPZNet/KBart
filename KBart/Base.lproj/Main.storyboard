@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="13F1066" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="pBb-jr-8Qd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="pBb-jr-8Qd">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -18,42 +19,72 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m7I-nj-thN" userLabel="ETA Button">
-                                <rect key="frame" x="16" y="72" width="256" height="115"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m7I-nj-thN" userLabel="ETA Button">
+                                <rect key="frame" x="16" y="72" width="152" height="115"/>
                                 <color key="backgroundColor" red="0.64616953347563166" green="0.72778834310614893" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="115" id="4WX-I1-maS"/>
+                                </constraints>
                                 <state key="normal" title="ETA">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gSw-hT-iNy" userLabel="Routes Button">
-                                <rect key="frame" x="330" y="72" width="248" height="115"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gSw-hT-iNy" userLabel="Routes Button">
+                                <rect key="frame" x="404" y="72" width="174" height="115"/>
                                 <color key="backgroundColor" red="0.64616953349999995" green="0.72778834309999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="115" id="wfk-bm-2wt"/>
+                                </constraints>
                                 <state key="normal" title="Routes">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wD5-yZ-xib" userLabel="Alerts Button">
-                                <rect key="frame" x="16" y="195" width="256" height="115"/>
-                                <color key="backgroundColor" red="0.64616953349999995" green="0.72778834309999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="BART Updates">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xeP-Ol-otm" userLabel="QuickViewETA">
+                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xeP-Ol-otm" userLabel="QuickViewETA">
                                 <rect key="frame" x="16" y="318" width="584" height="225"/>
                                 <connections>
                                     <segue destination="ma7-0R-N62" kind="embed" id="Nse-n6-yzf"/>
                                 </connections>
                             </containerView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jJJ-Re-2SI" userLabel="Configure Button">
-                                <rect key="frame" x="330" y="195" width="248" height="115"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jJJ-Re-2SI" userLabel="Configure Button">
+                                <rect key="frame" x="404" y="195" width="174" height="115"/>
                                 <color key="backgroundColor" red="0.64616953349999995" green="0.72778834309999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="115" id="ae2-s3-ICS"/>
+                                </constraints>
                                 <state key="normal" title="Setup">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wD5-yZ-xib" userLabel="Alerts Button">
+                                <rect key="frame" x="16" y="195" width="152" height="115"/>
+                                <color key="backgroundColor" red="0.64616953349999995" green="0.72778834309999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="115" id="6me-RX-DyV"/>
+                                </constraints>
+                                <state key="normal" title="BART Updates">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="xeP-Ol-otm" firstAttribute="bottom" secondItem="4ug-Mw-9AY" secondAttribute="top" constant="-2" id="51h-E7-feM"/>
+                            <constraint firstItem="wD5-yZ-xib" firstAttribute="trailing" secondItem="tsR-hK-woN" secondAttribute="centerXWithinMargins" constant="-1" id="948-9s-iIn"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="xeP-Ol-otm" secondAttribute="trailing" id="C2R-ZO-vRh"/>
+                            <constraint firstItem="wD5-yZ-xib" firstAttribute="top" secondItem="m7I-nj-thN" secondAttribute="bottom" constant="2" id="Ep7-Lc-trZ"/>
+                            <constraint firstItem="wD5-yZ-xib" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" id="FZW-Xf-1cf"/>
+                            <constraint firstItem="xeP-Ol-otm" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" id="HD4-u1-sN1"/>
+                            <constraint firstItem="m7I-nj-thN" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="2" id="VU5-6P-Fxq"/>
+                            <constraint firstItem="m7I-nj-thN" firstAttribute="trailing" secondItem="tsR-hK-woN" secondAttribute="centerXWithinMargins" constant="-1" id="ZOz-ih-4w1"/>
+                            <constraint firstItem="gSw-hT-iNy" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="centerXWithinMargins" constant="1" id="ZTY-QD-bn5"/>
+                            <constraint firstItem="jJJ-Re-2SI" firstAttribute="trailing" secondItem="tsR-hK-woN" secondAttribute="trailingMargin" id="buZ-dh-hZa"/>
+                            <constraint firstItem="gSw-hT-iNy" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="2" id="cBu-MZ-csi"/>
+                            <constraint firstItem="jJJ-Re-2SI" firstAttribute="top" secondItem="gSw-hT-iNy" secondAttribute="bottom" constant="2" id="ebn-OB-hgu"/>
+                            <constraint firstItem="jJJ-Re-2SI" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="centerXWithinMargins" constant="1" id="hMv-CI-1sf"/>
+                            <constraint firstItem="m7I-nj-thN" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" id="iOx-Qx-snb"/>
+                            <constraint firstItem="xeP-Ol-otm" firstAttribute="top" secondItem="wD5-yZ-xib" secondAttribute="bottom" constant="2" id="yAI-3y-Tcp"/>
+                            <constraint firstItem="gSw-hT-iNy" firstAttribute="trailing" secondItem="tsR-hK-woN" secondAttribute="trailingMargin" id="zlq-nF-dM6"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="NQf-H1-CJj"/>
                     <connections>
