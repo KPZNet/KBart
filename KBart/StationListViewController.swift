@@ -73,7 +73,6 @@ class StationListViewController: UIViewController , UITableViewDelegate , UITabl
     }
     
     
-    
      //MARK: - Navigation
     
     func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
