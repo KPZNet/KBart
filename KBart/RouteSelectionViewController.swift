@@ -79,28 +79,22 @@ class RouteSelectionViewController: UIViewController, UITableViewDelegate , UITa
     
     
     //MARK: - Navigation
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath
-    {
+
+    func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
         selectedStationRow = indexPath.row
-        
         return indexPath
     }
     
-    func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath
-    {
+    func tableView(tableView: UITableView,didSelectRowAtIndexPath indexPath: NSIndexPath){
         selectedStationRow = indexPath.row
-        
-        return indexPath
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {
         
-        
         if (segue.identifier == "stationDetailSeque")
         {
-            var svc = segue.destinationViewController as StationDetailViewController
+            var svc = segue.destinationViewController as! StationDetailViewController
             
             var selStation = stationList[selectedStationRow]
             svc.selectedStationAbbr = selStation.abbr
@@ -114,7 +108,7 @@ class RouteSelectionViewController: UIViewController, UITableViewDelegate , UITa
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-    let cell = tableView.dequeueReusableCellWithIdentifier("RouteStationCell", forIndexPath: indexPath) as UITableViewCell
+    let cell = tableView.dequeueReusableCellWithIdentifier("RouteStationCell", forIndexPath: indexPath) as! UITableViewCell
     
     // Configure the cell...
         if let statList = stationList

@@ -75,19 +75,16 @@ class StationListViewController: UIViewController , UITableViewDelegate , UITabl
     
      //MARK: - Navigation
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath
-    {
+    func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {        
         selectedStationRow = indexPath.row
-        
         return indexPath
     }
     
-    func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath
-    {
+    func tableView(tableView: UITableView,didSelectRowAtIndexPath indexPath: NSIndexPath){
         selectedStationRow = indexPath.row
-        
-        return indexPath
     }
+    
+
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {
@@ -95,7 +92,7 @@ class StationListViewController: UIViewController , UITableViewDelegate , UITabl
         
         if (segue.identifier == "stationDetailSeque")
         {
-            var svc = segue.destinationViewController as StationDetailViewController
+            var svc = segue.destinationViewController as! StationDetailViewController
             
             var selStation = stationList[selectedStationRow]
             svc.selectedStationAbbr = selStation.abbr

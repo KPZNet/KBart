@@ -10,19 +10,19 @@ import UIKit
 
 func GetAppDelegate() -> AppDelegate
 {
-    let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     return appDelegate
 }
 
 func GetDataQueue_serial() -> dispatch_queue_t
 {
-    let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     return appDelegate.dataQueue_serial
 }
 
 func GetDataQueue_concur() -> dispatch_queue_t
 {
-    let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     return appDelegate.dataQueue_concur
 }
 
