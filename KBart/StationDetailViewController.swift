@@ -64,7 +64,6 @@ class StationDetailViewController: UIViewController , UITableViewDelegate , UITa
                 
                 var destStations : DestinationStations = GetDestinationStations(forStationAbbr :sStationDef)
                 
-                
                 dispatch_async(dispatch_get_main_queue(),
                     { self.UpdateDestinationStations(forStations: destStations) } )
                 
