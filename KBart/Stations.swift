@@ -11,11 +11,11 @@ import Foundation
 func CallBARTAPI_Stations() -> NSData
 {
     let urlPath:String = "http://api.bart.gov/api/stn.aspx?cmd=stns&key=\(BARTAPI_LIC_KEY)"
-    var url: NSURL = NSURL(string: urlPath)!
-    var request1: NSURLRequest = NSURLRequest(URL: url)
-    var response: AutoreleasingUnsafeMutablePointer<NSURLResponse?>=nil
+    let url: NSURL = NSURL(string: urlPath)!
+    let request1: NSURLRequest = NSURLRequest(URL: url)
+    let response: AutoreleasingUnsafeMutablePointer<NSURLResponse?>=nil
     var error: NSErrorPointer = nil
-    var dataVal: NSData =  NSURLConnection.sendSynchronousRequest(request1, returningResponse: response, error:nil)!
+    let dataVal: NSData =  try! NSURLConnection.sendSynchronousRequest(request1, returningResponse: response)
     
     return dataVal
 }
@@ -28,10 +28,11 @@ func CallBARTAPI_Stations_Asynch(handler: (StationList) -> Void)
     let queuebert = dispatch_get_main_queue()
     
     NSURLConnection.sendAsynchronousRequest(request, queue: queue, completionHandler:
-        { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
+        { (response: NSURLResponse?, data: NSData?, error: NSError?) -> Void in
             
             var errorData: NSError?
-            var doc = AEXMLDocument(xmlData: data, error: &errorData)!
+           
+            var doc = try! AEXMLDocument(xmlData: data!)
             var stationList : StationList = StationList()
             Load_AEXML_into_BART_Stations(fromAEXMLDocument: doc, withStationList: stationList)
             handler(stationList)
@@ -47,9 +48,9 @@ func Load_AEXML_into_BART_Stations(fromAEXMLDocument doc : AEXMLDocument, withSt
     {
         for stat in doc["root"]["stations"]["station"].all!
         {
-            var stationKey = stat["abbr"].stringValue
+            let stationKey = stat["abbr"].stringValue
             
-            var newStation :Station = Station(  fromName:stat["name"].stringValue,
+            let newStation :Station = Station(  fromName:stat["name"].stringValue,
                 fromAbbr:stat["abbr"].stringValue,
                 fromLatitude:stat["gtfs_latitude"].stringValue,
                 fromLongitude:stat["gtfs_longitude"].stringValue,
@@ -65,8 +66,8 @@ func Load_AEXML_into_BART_Stations(fromAEXMLDocument doc : AEXMLDocument, withSt
     }
     else
     {
-        var msg:String = "There are no BART Stations retrieved"
-        println(msg)
+        let msg:String = "There are no BART Stations retrieved"
+        print(msg)
     }
     
     return _stationList
@@ -75,10 +76,10 @@ func Load_AEXML_into_BART_Stations(fromAEXMLDocument doc : AEXMLDocument, withSt
 func GetBARTStationsLive() -> StationList
 {
     
-    var data = CallBARTAPI_Stations();
+    let data = CallBARTAPI_Stations();
     var errorData: NSError?
-    var doc = AEXMLDocument(xmlData: data, error: &errorData)!
-    var stationList:StationList = StationList()
+    let doc = try! AEXMLDocument(xmlData: data)
+    let stationList:StationList = StationList()
     Load_AEXML_into_BART_Stations(fromAEXMLDocument: doc, withStationList: stationList)
     return stationList
 }
@@ -87,8 +88,8 @@ func ReadBARTStationsFromFile() -> StationList
     let xmlPath = NSBundle.mainBundle().pathForResource("BARTStations", ofType: "xml")
     let data = NSData(contentsOfFile: xmlPath!)
     var errorData: NSError?
-    var doc = AEXMLDocument(xmlData: data!, error: &errorData)!
-    var stationList:StationList = StationList()
+    let doc = try! AEXMLDocument(xmlData: data!)
+    let stationList:StationList = StationList()
     Load_AEXML_into_BART_Stations(fromAEXMLDocument: doc, withStationList: stationList)
     return stationList
 }
@@ -100,11 +101,11 @@ func CallBARTAPI_ETD(forStation _forStation : String) -> NSData
 {
     let urlPath:String = "http://api.bart.gov/api/etd.aspx?cmd=etd&orig=\(_forStation)&key=\(BARTAPI_LIC_KEY)"
     
-    var url: NSURL = NSURL(string: urlPath)!
-    var request1: NSURLRequest = NSURLRequest(URL: url)
-    var response: AutoreleasingUnsafeMutablePointer<NSURLResponse?>=nil
+    let url: NSURL = NSURL(string: urlPath)!
+    let request1: NSURLRequest = NSURLRequest(URL: url)
+    let response: AutoreleasingUnsafeMutablePointer<NSURLResponse?>=nil
     var error: NSErrorPointer = nil
-    var dataVal: NSData =  NSURLConnection.sendSynchronousRequest(request1, returningResponse: response, error:nil)!
+    let dataVal: NSData =  try! NSURLConnection.sendSynchronousRequest(request1, returningResponse: response)
     
     return dataVal
 }
@@ -119,9 +120,9 @@ func Load_AEXML_into_DestinationStations(fromAEXMLDocument doc : AEXMLDocument, 
     {
         for stat in doc["root"]["station"]["etd"].all!
         {
-            var departingStationKey = stat["abbreviation"].stringValue
+            let departingStationKey = stat["abbreviation"].stringValue
             
-            var newStation :DestinationStation = DestinationStation()
+            let newStation :DestinationStation = DestinationStation()
             
             newStation.name = stat["destination"].stringValue
             newStation.abbr = stat["abbreviation"].stringValue
@@ -130,7 +131,7 @@ func Load_AEXML_into_DestinationStations(fromAEXMLDocument doc : AEXMLDocument, 
             {
                 for train in stat["estimate"].all!
                 {
-                    var newTrain :DepartingTrain = DepartingTrain()
+                    let newTrain :DepartingTrain = DepartingTrain()
                     
                     newTrain.minutes = train["minutes"].stringValue
                     newTrain.platform = train["platform"].stringValue
@@ -145,8 +146,8 @@ func Load_AEXML_into_DestinationStations(fromAEXMLDocument doc : AEXMLDocument, 
             }
             else
             {
-                var msg:String = "Departing Station \(departingStationKey) has no trains"
-                println(msg)
+                let msg:String = "Departing Station \(departingStationKey) has no trains"
+                print(msg)
             }
             _destinationStations.stations[departingStationKey] = newStation
             _destinationStations.stationArray.append(newStation)
@@ -154,8 +155,8 @@ func Load_AEXML_into_DestinationStations(fromAEXMLDocument doc : AEXMLDocument, 
     }
     else
     {
-        var msg:String = "Station \(_destinationStations.stationAbbr) has no departures"
-        println(msg)
+        let msg:String = "Station \(_destinationStations.stationAbbr) has no departures"
+        print(msg)
     }
     
     return _destinationStations
@@ -163,10 +164,10 @@ func Load_AEXML_into_DestinationStations(fromAEXMLDocument doc : AEXMLDocument, 
 
 func GetDestinationStations(forStationAbbr _forStationAbbr:String) -> DestinationStations
 {
-    var data = CallBARTAPI_ETD(forStation:_forStationAbbr);
+    let data = CallBARTAPI_ETD(forStation:_forStationAbbr);
     var errorData: NSError?
-    var doc = AEXMLDocument(xmlData: data, error: &errorData)!
-    var stationList:DestinationStations = DestinationStations(forStation:_forStationAbbr)
+    let doc = try! AEXMLDocument(xmlData: data)
+    let stationList:DestinationStations = DestinationStations(forStation:_forStationAbbr)
     Load_AEXML_into_DestinationStations(fromAEXMLDocument: doc, withDestinationStations: stationList)
     return stationList
 }
@@ -244,12 +245,12 @@ class DestinationStations
     
     subscript(key: String) -> DestinationStation
         {
-            var Stat : DestinationStation = stations[key]!
+            let Stat : DestinationStation = stations[key]!
             return Stat
     }
     subscript(key: Int) -> DestinationStation
         {
-            var Stat : DestinationStation = stationArray[key]
+            let Stat : DestinationStation = stationArray[key]
             return Stat
     }
 }
@@ -303,12 +304,12 @@ class StationList
     
     subscript(key: String) -> Station
         {
-            var Stat : Station = stations[key]!
+            let Stat : Station = stations[key]!
             return Stat
     }
     subscript(key: Int) -> Station
         {
-            var Stat : Station = stationArray[key]
+            let Stat : Station = stationArray[key]
             return Stat
     }
     

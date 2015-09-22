@@ -94,9 +94,9 @@ class RouteSelectionViewController: UIViewController, UITableViewDelegate , UITa
         
         if (segue.identifier == "stationDetailSeque")
         {
-            var svc = segue.destinationViewController as! StationDetailViewController
+            let svc = segue.destinationViewController as! StationDetailViewController
             
-            var selStation = stationList[selectedStationRow]
+            let selStation = stationList[selectedStationRow]
             svc.selectedStationAbbr = selStation.abbr
             
         }
@@ -108,12 +108,12 @@ class RouteSelectionViewController: UIViewController, UITableViewDelegate , UITa
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-    let cell = tableView.dequeueReusableCellWithIdentifier("RouteStationCell", forIndexPath: indexPath) as! UITableViewCell
+    let cell = tableView.dequeueReusableCellWithIdentifier("RouteStationCell", forIndexPath: indexPath) 
     
     // Configure the cell...
         if let statList = stationList
         {
-             var stat = stationList[indexPath.row]
+             let stat = stationList[indexPath.row]
             cell.textLabel?.text = stat.name
         }
     return cell

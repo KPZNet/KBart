@@ -58,8 +58,8 @@ class TBTableViewController: UITableViewController {
         var returnCell:UITableViewCell!
         
         
-        var cellIdentifier:String = "StationListCell"
-        var cell:StationListCell? = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as? StationListCell
+        let cellIdentifier:String = "StationListCell"
+        let cell:StationListCell? = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as? StationListCell
         
         // Configure the cell...
         

@@ -45,8 +45,8 @@ class ExampleChildViewController: UIViewController {
     
     private func PlaceView()
     {
-        var pViewHeight : CGFloat = pViewController!.view!.bounds.height
-        var selfHalfHeight : CGFloat = self.view.bounds.height / 2
+        let pViewHeight : CGFloat = pViewController!.view!.bounds.height
+        let selfHalfHeight : CGFloat = self.view.bounds.height / 2
         var selfHeight : CGFloat = self.view.bounds.height
         
         switch viewPlacement

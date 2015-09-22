@@ -62,7 +62,7 @@ class StationDetailViewController: UIViewController , UITableViewDelegate , UITa
                     sStationDef = sAbbr
                 }
                 
-                var destStations : DestinationStations = GetDestinationStations(forStationAbbr :sStationDef)
+                let destStations : DestinationStations = GetDestinationStations(forStationAbbr :sStationDef)
                 
                 dispatch_async(dispatch_get_main_queue(),
                     { self.UpdateDestinationStations(forStations: destStations) } )
@@ -130,13 +130,13 @@ class StationDetailViewController: UIViewController , UITableViewDelegate , UITa
         var returnCell:UITableViewCell!
         
         
-        var cellIdentifier:String = "DestinationStationCell"
-        var cell:DestinationStationCell? = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as? DestinationStationCell
+        let cellIdentifier:String = "DestinationStationCell"
+        let cell:DestinationStationCell? = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as? DestinationStationCell
         
         // Configure the cell...
         if let dStations = destinationStations
         {
-            var stat = dStations[indexPath.row]
+            let stat = dStations[indexPath.row]
             cell?.SetStation(forStation: stat)
         }
         

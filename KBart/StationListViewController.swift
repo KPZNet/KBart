@@ -92,9 +92,9 @@ class StationListViewController: UIViewController , UITableViewDelegate , UITabl
         
         if (segue.identifier == "stationDetailSeque")
         {
-            var svc = segue.destinationViewController as! StationDetailViewController
+            let svc = segue.destinationViewController as! StationDetailViewController
             
-            var selStation = stationList[selectedStationRow]
+            let selStation = stationList[selectedStationRow]
             svc.selectedStationAbbr = selStation.abbr
             
         }
@@ -108,11 +108,11 @@ class StationListViewController: UIViewController , UITableViewDelegate , UITabl
         
         if(tableView == stationTable)
         {
-            var cellIdentifier:String = "StationListCell"
-            var cell:StationListCell? = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as? StationListCell
+            let cellIdentifier:String = "StationListCell"
+            let cell:StationListCell? = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as? StationListCell
             
             // Configure the cell...
-            var stat = stationList![indexPath.row]
+            let stat = stationList![indexPath.row]
             
             cell?.stationName.text = stat.name
             
