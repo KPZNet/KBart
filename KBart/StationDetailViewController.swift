@@ -89,7 +89,7 @@ class StationDetailViewController: UIViewController , UITableViewDelegate , UITa
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
         var tableSections : Int = 0
-        if let dStations = destinationStations
+        if let _ = destinationStations
         {
             tableSections = 1
         }

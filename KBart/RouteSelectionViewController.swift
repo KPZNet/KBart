@@ -54,7 +54,7 @@ class RouteSelectionViewController: UIViewController, UITableViewDelegate , UITa
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
         var tableSections : Int = 0
-        if let statList = stationList
+        if let _ = stationList
         {
             tableSections = 1
         }
@@ -111,7 +111,7 @@ class RouteSelectionViewController: UIViewController, UITableViewDelegate , UITa
     let cell = tableView.dequeueReusableCellWithIdentifier("RouteStationCell", forIndexPath: indexPath) 
     
     // Configure the cell...
-        if let statList = stationList
+        if let _ = stationList
         {
              let stat = stationList[indexPath.row]
             cell.textLabel?.text = stat.name

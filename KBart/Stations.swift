@@ -14,7 +14,6 @@ func CallBARTAPI_Stations() -> NSData
     let url: NSURL = NSURL(string: urlPath)!
     let request1: NSURLRequest = NSURLRequest(URL: url)
     let response: AutoreleasingUnsafeMutablePointer<NSURLResponse?>=nil
-    var error: NSErrorPointer = nil
     let dataVal: NSData =  try! NSURLConnection.sendSynchronousRequest(request1, returningResponse: response)
     
     return dataVal
@@ -25,15 +24,12 @@ func CallBARTAPI_Stations_Asynch(handler: (StationList) -> Void)
     let url:NSURL = NSURL(string:"http://api.bart.gov/api/stn.aspx?cmd=stns&key=\(BARTAPI_LIC_KEY)")!
     let request:NSURLRequest = NSURLRequest(URL:url)
     let queue:NSOperationQueue = NSOperationQueue()
-    let queuebert = dispatch_get_main_queue()
     
     NSURLConnection.sendAsynchronousRequest(request, queue: queue, completionHandler:
         { (response: NSURLResponse?, data: NSData?, error: NSError?) -> Void in
             
-            var errorData: NSError?
-           
-            var doc = try! AEXMLDocument(xmlData: data!)
-            var stationList : StationList = StationList()
+            let doc = try! AEXMLDocument(xmlData: data!)
+            let stationList : StationList = StationList()
             Load_AEXML_into_BART_Stations(fromAEXMLDocument: doc, withStationList: stationList)
             handler(stationList)
     })
@@ -42,7 +38,6 @@ func CallBARTAPI_Stations_Asynch(handler: (StationList) -> Void)
 func Load_AEXML_into_BART_Stations(fromAEXMLDocument doc : AEXMLDocument, withStationList _stationList:StationList) -> StationList
 {
     
-    var parsedText = String()
     // parse known structure
     if(doc["root"]["stations"]["station"].all != nil)
     {
@@ -77,7 +72,6 @@ func GetBARTStationsLive() -> StationList
 {
     
     let data = CallBARTAPI_Stations();
-    var errorData: NSError?
     let doc = try! AEXMLDocument(xmlData: data)
     let stationList:StationList = StationList()
     Load_AEXML_into_BART_Stations(fromAEXMLDocument: doc, withStationList: stationList)
@@ -87,7 +81,6 @@ func ReadBARTStationsFromFile() -> StationList
 {
     let xmlPath = NSBundle.mainBundle().pathForResource("BARTStations", ofType: "xml")
     let data = NSData(contentsOfFile: xmlPath!)
-    var errorData: NSError?
     let doc = try! AEXMLDocument(xmlData: data!)
     let stationList:StationList = StationList()
     Load_AEXML_into_BART_Stations(fromAEXMLDocument: doc, withStationList: stationList)
@@ -104,7 +97,6 @@ func CallBARTAPI_ETD(forStation _forStation : String) -> NSData
     let url: NSURL = NSURL(string: urlPath)!
     let request1: NSURLRequest = NSURLRequest(URL: url)
     let response: AutoreleasingUnsafeMutablePointer<NSURLResponse?>=nil
-    var error: NSErrorPointer = nil
     let dataVal: NSData =  try! NSURLConnection.sendSynchronousRequest(request1, returningResponse: response)
     
     return dataVal
@@ -165,7 +157,6 @@ func Load_AEXML_into_DestinationStations(fromAEXMLDocument doc : AEXMLDocument, 
 func GetDestinationStations(forStationAbbr _forStationAbbr:String) -> DestinationStations
 {
     let data = CallBARTAPI_ETD(forStation:_forStationAbbr);
-    var errorData: NSError?
     let doc = try! AEXMLDocument(xmlData: data)
     let stationList:DestinationStations = DestinationStations(forStation:_forStationAbbr)
     Load_AEXML_into_DestinationStations(fromAEXMLDocument: doc, withDestinationStations: stationList)

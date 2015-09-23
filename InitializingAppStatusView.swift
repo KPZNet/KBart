@@ -55,7 +55,6 @@ class InitializingAppStatusView: UIViewController {
     {
         let pViewHeight : CGFloat = pViewController!.view!.bounds.height
         let selfHalfHeight : CGFloat = self.view.bounds.height / 2
-        var selfHeight : CGFloat = self.view.bounds.height
         
         switch viewPlacement
         {
@@ -73,9 +72,7 @@ class InitializingAppStatusView: UIViewController {
         case ViewPlacementEnum.custom:
             self.view.center = pViewController!.view!.center
             self.view.center.y = selfHalfHeight + (pViewHeight * customPlacement)
-            
-        default:
-            self.view.center = pViewController!.view!.center
+
         }
     }
     

@@ -147,7 +147,7 @@ public class AEXMLElement {
     private func indentation(count: Int) -> String {
         var indent = String()
         if count > 0 {
-            for i in 0..<count {
+            for _ in 0..<count {
                 indent += "\t"
             }
         }
@@ -298,7 +298,7 @@ class AEXMLParser: NSObject, NSXMLParserDelegate {
         currentParent = currentElement
     }
     
-    func parser(parser: NSXMLParser, foundCharacters string: String?) {
+    func parser(parser: NSXMLParser, foundCharacters string: String) {
         currentValue += string ?? String()
         let newValue = currentValue.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
         currentElement?.value = newValue == String() ? nil : newValue
