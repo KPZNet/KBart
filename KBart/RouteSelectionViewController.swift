@@ -37,7 +37,7 @@ class RouteSelectionViewController: UIViewController, UITableViewDelegate , UITa
         _forView.layer.cornerRadius = 5.0
         _forView.layer.masksToBounds = true
         _forView.layer.borderWidth = 0.5
-        _forView.layer.borderColor = UIColor.blackColor().CGColor
+        _forView.layer.borderColor = UIColor.black.cgColor
     }
     
     
@@ -49,7 +49,7 @@ class RouteSelectionViewController: UIViewController, UITableViewDelegate , UITa
     // MARK: - Table view data source
     
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int
+    func numberOfSections(in tableView: UITableView) -> Int
     {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
@@ -63,7 +63,7 @@ class RouteSelectionViewController: UIViewController, UITableViewDelegate , UITa
     }
     
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
@@ -80,21 +80,21 @@ class RouteSelectionViewController: UIViewController, UITableViewDelegate , UITa
     
     //MARK: - Navigation
 
-    func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-        selectedStationRow = indexPath.row
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        selectedStationRow = (indexPath as NSIndexPath).row
         return indexPath
     }
     
-    func tableView(tableView: UITableView,didSelectRowAtIndexPath indexPath: NSIndexPath){
-        selectedStationRow = indexPath.row
+    func tableView(_ tableView: UITableView,didSelectRowAt indexPath: IndexPath){
+        selectedStationRow = (indexPath as NSIndexPath).row
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         
         if (segue.identifier == "stationDetailSeque")
         {
-            let svc = segue.destinationViewController as! StationDetailViewController
+            let svc = segue.destination as! StationDetailViewController
             
             let selStation = stationList[selectedStationRow]
             svc.selectedStationAbbr = selStation.abbr
@@ -106,14 +106,14 @@ class RouteSelectionViewController: UIViewController, UITableViewDelegate , UITa
     
     
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-    let cell = tableView.dequeueReusableCellWithIdentifier("RouteStationCell", forIndexPath: indexPath) 
+    let cell = tableView.dequeueReusableCell(withIdentifier: "RouteStationCell", for: indexPath) 
     
     // Configure the cell...
         if let _ = stationList
         {
-             let stat = stationList[indexPath.row]
+             let stat = stationList[(indexPath as NSIndexPath).row]
             cell.textLabel?.text = stat.name
         }
     return cell

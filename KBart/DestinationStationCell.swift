@@ -22,7 +22,7 @@ class DestinationStationCell: UITableViewCell {
         //_forView.layer.cornerRadius = 5.0
         //_forView.layer.masksToBounds = true
         _forView.layer.borderWidth = 0.5
-        _forView.layer.borderColor = UIColor.blackColor().CGColor
+        _forView.layer.borderColor = UIColor.black.cgColor
     }
 
     
@@ -44,11 +44,11 @@ class DestinationStationCell: UITableViewCell {
         if let dTrain = _forTrain
         {
             var mins : String = dTrain.minutes
-            _forLabel.layer.backgroundColor = UIColor.clearColor().CGColor
+            _forLabel.layer.backgroundColor = UIColor.clear.cgColor
             if(mins.isEqual("Leaving"))
             {
                 mins = "Now"
-                _forLabel.layer.backgroundColor = UIColor.greenColor().CGColor
+                _forLabel.layer.backgroundColor = UIColor.green.cgColor
             }
             _forLabel.text = mins
         }
@@ -64,7 +64,7 @@ class DestinationStationCell: UITableViewCell {
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state

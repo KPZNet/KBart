@@ -35,15 +35,12 @@ class MainViewController: UIViewController
         SetRoundedViewBox(forView: quickViewStationETA)
         
         
-        dispatch_async(GetDataQueue_serial(),
-            {
-                dispatch_async(dispatch_get_main_queue(),
-                    { self.ShowStationStatus() } )
+        GetDataQueue_serial().async(execute: {
+                DispatchQueue.main.async(execute: { self.ShowStationStatus() } )
                 //self.stationList = ReadBARTStationsFromFile()
                 self.stationList = GetBARTStationsLive()
                 GetAppDelegate().SetStationList(forStationList: self.stationList)
-                dispatch_async(dispatch_get_main_queue(),
-                    { self.DoneLoadingStations() } )
+                DispatchQueue.main.async(execute: { self.DoneLoadingStations() } )
                 
         })
     }

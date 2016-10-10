@@ -15,7 +15,7 @@ class StationDetailViewController: UIViewController , UITableViewDelegate , UITa
     //var selectedStation : Station!
     var selectedStationAbbr : String?
     let selectedStationAbbrDefault : String = "RICH"
-    var updateTimer  = NSTimer()
+    var updateTimer  = Timer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,18 +25,18 @@ class StationDetailViewController: UIViewController , UITableViewDelegate , UITa
         
     }
     
-    override func viewWillDisappear(_animated: Bool)
+    override func viewWillDisappear(_ _animated: Bool)
     {
         updateTimer.invalidate()
         
     }
-    override func viewWillAppear(animated: Bool)
+    override func viewWillAppear(_ animated: Bool)
     {
         updateTimer.invalidate()
         FireGetDepartureStations()
-        updateTimer = NSTimer.scheduledTimerWithTimeInterval(30.0,
+        updateTimer = Timer.scheduledTimer(timeInterval: 30.0,
             target: self,
-            selector: Selector("FireGetDepartureStations"),
+            selector: #selector(StationDetailViewController.FireGetDepartureStations),
             userInfo: nil,
             repeats: true)
     }
@@ -53,8 +53,7 @@ class StationDetailViewController: UIViewController , UITableViewDelegate , UITa
     func FireGetDepartureStations()
     {
         
-        dispatch_async(GetDataQueue_serial(),
-            {
+        GetDataQueue_serial().async(execute: {
                 var sStationDef : String = self.selectedStationAbbrDefault
                 
                 if let sAbbr = self.selectedStationAbbr
@@ -64,8 +63,7 @@ class StationDetailViewController: UIViewController , UITableViewDelegate , UITa
                 
                 let destStations : DestinationStations = GetDestinationStations(forStationAbbr :sStationDef)
                 
-                dispatch_async(dispatch_get_main_queue(),
-                    { self.UpdateDestinationStations(forStations: destStations) } )
+                DispatchQueue.main.async(execute: { self.UpdateDestinationStations(forStations: destStations) } )
                 
         })
         
@@ -84,7 +82,7 @@ class StationDetailViewController: UIViewController , UITableViewDelegate , UITa
     // MARK: - Table view data source
     
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int
+    func numberOfSections(in tableView: UITableView) -> Int
     {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
@@ -98,7 +96,7 @@ class StationDetailViewController: UIViewController , UITableViewDelegate , UITa
     }
     
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
@@ -122,21 +120,21 @@ class StationDetailViewController: UIViewController , UITableViewDelegate , UITa
     //    }
     
     func isLandscapeOrientation() -> Bool {
-        return UIInterfaceOrientationIsLandscape(UIApplication.sharedApplication().statusBarOrientation)
+        return UIInterfaceOrientationIsLandscape(UIApplication.shared.statusBarOrientation)
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         var returnCell:UITableViewCell!
         
         
         let cellIdentifier:String = "DestinationStationCell"
-        let cell:DestinationStationCell? = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as? DestinationStationCell
+        let cell:DestinationStationCell? = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? DestinationStationCell
         
         // Configure the cell...
         if let dStations = destinationStations
         {
-            let stat = dStations[indexPath.row]
+            let stat = dStations[(indexPath as NSIndexPath).row]
             cell?.SetStation(forStation: stat)
         }
         

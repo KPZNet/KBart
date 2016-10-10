@@ -16,7 +16,7 @@
             startingLineNumber = "22"
             endingLineNumber = "22"
             landmarkName = "SetSquareViewBox(forView:)"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -26,13 +26,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "KBart/Stations.swift"
-            timestampString = "449208297.032284"
+            timestampString = "497764156.180441"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "221"
-            endingLineNumber = "221"
-            landmarkName = "DestinationStation"
-            landmarkType = "3">
+            startingLineNumber = "11"
+            endingLineNumber = "11"
+            landmarkName = "CallBARTAPI_Stations()"
+            landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "KBart/StationDetailViewController.swift"
-            timestampString = "449807482.202722"
+            timestampString = "497764156.180441"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
             landmarkName = "FireGetDepartureStations()"
             landmarkType = "5">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "KBart/StationDetailViewController.swift"
-            timestampString = "449807482.202722"
+            timestampString = "497764156.180441"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
             landmarkName = "viewWillDisappear(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "KBart/StationDetailViewController.swift"
-            timestampString = "449807482.202722"
+            timestampString = "497764156.180441"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
             landmarkName = "viewWillAppear(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -90,13 +90,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "KBart/StationListViewController.swift"
-            timestampString = "449795155.34719"
+            timestampString = "497764156.180441"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
-            landmarkName = "tableView(_:cellForRowAtIndexPath:)"
-            landmarkType = "5">
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "KBart/StationDetailViewController.swift"
-            timestampString = "449807524.75212"
+            timestampString = "497764156.180441"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
             landmarkName = "FireGetDepartureStations()"
             landmarkType = "5">
          </BreakpointContent>
@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "KBart/StationDetailViewController.swift"
-            timestampString = "449807548.870722"
+            timestampString = "497764156.180441"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
             landmarkName = "FireGetDepartureStations()"
             landmarkType = "5">
          </BreakpointContent>
@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "KBart/StationDetailViewController.swift"
-            timestampString = "449807555.925835"
+            timestampString = "497764156.180441"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
             landmarkName = "FireGetDepartureStations()"
             landmarkType = "5">
          </BreakpointContent>
@@ -154,13 +154,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "KBart/Stations.swift"
-            timestampString = "464647330.795601"
+            timestampString = "497764156.180441"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "13"
-            endingLineNumber = "13"
+            startingLineNumber = "11"
+            endingLineNumber = "11"
             landmarkName = "CallBARTAPI_Stations()"
-            landmarkType = "7">
+            landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

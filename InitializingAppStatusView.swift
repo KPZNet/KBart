@@ -12,8 +12,8 @@ let XIB_NAME_InitializingAppStatusView:String = "InitializingAppStatusView"
 
 class InitializingAppStatusView: UIViewController {
     
-    private var viewPlacement : ViewPlacementEnum = ViewPlacementEnum.top
-    private var customPlacement : CGFloat = 0.0
+    fileprivate var viewPlacement : ViewPlacementEnum = ViewPlacementEnum.top
+    fileprivate var customPlacement : CGFloat = 0.0
     
     var cancelCallback: ( () -> Void )?
     
@@ -22,7 +22,7 @@ class InitializingAppStatusView: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     
-    @IBAction func OnCancel(sender: AnyObject)
+    @IBAction func OnCancel(_ sender: AnyObject)
     {
         if let cC = cancelCallback
         {
@@ -31,7 +31,7 @@ class InitializingAppStatusView: UIViewController {
     }
     
     
-    convenience init(forController _forController:UIViewController, CancelHandler _cancelHandler: () -> Void, ViewPlacement _placement:ViewPlacementEnum = .top, CustomPlacement _customPlacement:CGFloat = 0.0)
+    convenience init(forController _forController:UIViewController, CancelHandler _cancelHandler: @escaping () -> Void, ViewPlacement _placement:ViewPlacementEnum = .top, CustomPlacement _customPlacement:CGFloat = 0.0)
     {
         self.init(nibName : XIB_NAME_InitializingAppStatusView, bundle : nil)
         self.pViewController = _forController
@@ -40,7 +40,7 @@ class InitializingAppStatusView: UIViewController {
         Placement(Placement: _placement, CustomPlacement: _customPlacement)
     }
     
-    func SetCancelHandler(handler _handler: () -> Void)
+    func SetCancelHandler(handler _handler: @escaping () -> Void)
     {
        cancelCallback = _handler
     }
@@ -51,7 +51,7 @@ class InitializingAppStatusView: UIViewController {
         customPlacement = _customPlacement
     }
     
-    private func PlaceView()
+    fileprivate func PlaceView()
     {
         let pViewHeight : CGFloat = pViewController!.view!.bounds.height
         let selfHalfHeight : CGFloat = self.view.bounds.height / 2
@@ -124,7 +124,7 @@ class InitializingAppStatusView: UIViewController {
         _forView.layer.cornerRadius = 5.0
         _forView.layer.masksToBounds = true
         _forView.layer.borderWidth = 0.5
-        _forView.layer.borderColor = UIColor.blackColor().CGColor
+        _forView.layer.borderColor = UIColor.black.cgColor
     }
     
     override func viewDidLoad() {

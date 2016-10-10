@@ -14,8 +14,8 @@ class ExampleChildViewController: UIViewController {
     
     
     
-    private var viewPlacement : ViewPlacementEnum = ViewPlacementEnum.top
-    private var customPlacement : CGFloat = 0.0
+    fileprivate var viewPlacement : ViewPlacementEnum = ViewPlacementEnum.top
+    fileprivate var customPlacement : CGFloat = 0.0
     
     var pViewController:UIViewController?
     
@@ -38,12 +38,12 @@ class ExampleChildViewController: UIViewController {
         viewPlacement = _placement
         customPlacement = _customPlacement
     }
-    @IBAction func OnClose(sender: AnyObject)
+    @IBAction func OnClose(_ sender: AnyObject)
     {
         self.CloseView()
     }
     
-    private func PlaceView()
+    fileprivate func PlaceView()
     {
         let pViewHeight : CGFloat = pViewController!.view!.bounds.height
         let selfHalfHeight : CGFloat = self.view.bounds.height / 2
