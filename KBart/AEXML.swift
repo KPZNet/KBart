@@ -31,7 +31,7 @@ open class AEXMLElement {
     open fileprivate(set) weak var parent: AEXMLElement?
     open fileprivate(set) var children: [AEXMLElement] = [AEXMLElement]()
     
-    open let name: String
+    public let name: String
     open fileprivate(set) var attributes: [AnyHashable: Any]
     open var value: String?
     
@@ -202,9 +202,9 @@ open class AEXMLDocument: AEXMLElement {
     
     // MARK: Properties
     
-    open let version: Double
-    open let encoding: String
-    open let standalone: String
+    public let version: Double
+    public let encoding: String
+    public let standalone: String
     
     open var root: AEXMLElement {
         return children.count == 1 ? children.first! : AEXMLElement(AEXMLElement.errorElementName, value: "XML Document must have root element.")

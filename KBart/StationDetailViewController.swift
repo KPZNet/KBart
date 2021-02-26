@@ -50,7 +50,7 @@ class StationDetailViewController: UIViewController , UITableViewDelegate , UITa
         self.destinationStations = _forStations
         departureStationsTable.reloadData()
     }
-    func FireGetDepartureStations()
+    @objc func FireGetDepartureStations()
     {
         
         GetDataQueue_serial().async(execute: {
@@ -120,7 +120,7 @@ class StationDetailViewController: UIViewController , UITableViewDelegate , UITa
     //    }
     
     func isLandscapeOrientation() -> Bool {
-        return UIInterfaceOrientationIsLandscape(UIApplication.shared.statusBarOrientation)
+        return UIApplication.shared.statusBarOrientation.isLandscape
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
